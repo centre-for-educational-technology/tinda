@@ -1,0 +1,25 @@
+uuid: d04825c5-9b8d-4bbb-b28f-1225b4cae8c0
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tinda
+_core:
+  default_config_hash: NDwadleLD3YVSbDUaakxyYZyINYtkFtOVGShfq4kWy8
+id: tinda_branding
+theme: tinda
+region: brand
+weight: -6
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  provider: system
+  label_display: '0'
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

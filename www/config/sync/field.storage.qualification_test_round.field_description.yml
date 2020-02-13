@@ -1,0 +1,19 @@
+uuid: 566fa016-295b-4a12-a280-8335136a31ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - qualification_test_rounds
+    - text
+id: qualification_test_round.field_description
+field_name: field_description
+entity_type: qualification_test_round
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

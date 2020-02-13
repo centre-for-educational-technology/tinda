@@ -1,0 +1,95 @@
+uuid: d7482cc4-3f35-4713-b1f0-ea8b3591fbf2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.test_question.order.field_help_text
+    - field.field.test_question.order.field_id
+    - field.field.test_question.order.field_max
+    - field.field.test_question.order.field_min
+    - field.field.test_question.order.field_order_answers_correct
+    - field.field.test_question.order.field_order_answers_wrong
+    - field.field.test_question.order.field_qualification_standard
+    - questions.test_question_type.order
+id: test_question.order.default
+targetEntityType: test_question
+bundle: order
+mode: default
+content:
+  field_help_text:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_id:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_max:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_min:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_order_answers_correct:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_order_answers_wrong:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_qualification_standard:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  user_id: true

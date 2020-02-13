@@ -1,0 +1,6 @@
+qualification_test_round.admin.tests.settings:
+  title: 'Qualification Test Round settings'
+  description: 'Configure Qualification Test Round entities'
+  route_name: qualification_test_round.settings
+  parent: views_view:views.qualification_test_rounds.qualification_test_round_collection
+  weight: 150

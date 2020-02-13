@@ -1,0 +1,20 @@
+uuid: 3604cee8-03dd-4907-b114-f3b158f6331f
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - questions
+id: paragraph.field_test_questions
+field_name: field_test_questions
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: test_question
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

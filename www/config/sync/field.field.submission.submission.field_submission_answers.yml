@@ -1,0 +1,49 @@
+uuid: 4a1a083f-2e05-4310-93e0-70c409f7670d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.submission.field_submission_answers
+    - paragraphs.paragraphs_type.submission_answers
+  module:
+    - entity_reference_revisions
+    - submissions
+id: submission.submission.field_submission_answers
+field_name: field_submission_answers
+entity_type: submission
+bundle: submission
+label: 'Submission Answers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      submission_answers: submission_answers
+    target_bundles_drag_drop:
+      submission_answers:
+        enabled: true
+        weight: 8
+      associate_answers:
+        weight: 9
+        enabled: false
+      checkbox_selections:
+        weight: 10
+        enabled: false
+      order_answers:
+        weight: 11
+        enabled: false
+      question_sections:
+        weight: 12
+        enabled: false
+      test_question:
+        weight: 13
+        enabled: false
+      test_round_questions:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

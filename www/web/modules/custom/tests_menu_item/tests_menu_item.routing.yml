@@ -1,0 +1,7 @@
+tests_menu_item.admin_tests:
+  path: '/admin/tests'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Tests'
+  requirements:
+    _permission: 'access administration pages'

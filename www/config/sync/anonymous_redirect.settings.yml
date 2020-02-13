@@ -1,0 +1,5 @@
+enable_redirect: true
+redirect_url: /user/login
+_core:
+  default_config_hash: Isi-WZEyAW2Cq1x-wMweSS7qbG2-acsrXk1zdExwkmk
+redirect_url_overrides: "/user/password\r\n/user/reset/*"

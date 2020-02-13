@@ -1,0 +1,54 @@
+uuid: b4c6e569-f155-4bf6-8e69-a47f646ba355
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_form_mode.qualification_test_round.edit
+    - field.field.qualification_test_round.qualification_test_round.field_base_test
+    - field.field.qualification_test_round.qualification_test_round.field_end_time
+    - field.field.qualification_test_round.qualification_test_round.field_move_between_questions
+    - field.field.qualification_test_round.qualification_test_round.field_start_time
+    - field.field.qualification_test_round.qualification_test_round.field_test_round_questions
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.edit
+targetEntityType: qualification_test_round
+bundle: qualification_test_round
+mode: edit
+content:
+  field_base_test:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_end_time: true
+  field_move_between_questions: true
+  field_show_questions: true
+  field_start_time: true
+  field_test_round_questions: true
+  user_id: true

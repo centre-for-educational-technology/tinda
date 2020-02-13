@@ -1,0 +1,23 @@
+uuid: a9c70948-ec16-4dfa-958d-afd0fbbc0e1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_required
+    - paragraphs.paragraphs_type.test_question
+id: paragraph.test_question.field_required
+field_name: field_required
+entity_type: paragraph
+bundle: test_question
+label: Required
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

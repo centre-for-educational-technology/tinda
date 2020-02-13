@@ -1,0 +1,6 @@
+uuid: a15dbf70-0a08-44d1-9189-aaa7bc3b3570
+langcode: en
+status: true
+dependencies: {  }
+id: checkbox
+label: Checkbox

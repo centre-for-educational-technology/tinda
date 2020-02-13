@@ -1,0 +1,27 @@
+# Qualification Test Round routing definition
+qualification_test_round.settings_tab:
+  route_name: qualification_test_round.settings
+  title: 'Settings'
+  base_route: qualification_test_round.settings
+
+entity.qualification_test_round.canonical:
+  route_name: entity.qualification_test_round.canonical
+  base_route: entity.qualification_test_round.canonical
+  title: 'View'
+
+entity.qualification_test_round.edit_form:
+  route_name: entity.qualification_test_round.edit_form
+  base_route: entity.qualification_test_round.canonical
+  title: 'Edit'
+
+entity.qualification_test_round.version_history:
+  route_name: entity.qualification_test_round.version_history
+  base_route: entity.qualification_test_round.canonical
+  title: 'Revisions'
+
+entity.qualification_test_round.delete_form:
+  route_name:  entity.qualification_test_round.delete_form
+  base_route:  entity.qualification_test_round.canonical
+  title: Delete
+  weight: 10
+

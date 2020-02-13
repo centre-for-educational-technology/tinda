@@ -1,0 +1,9 @@
+uuid: 927ab752-017a-4475-bc42-0267c8d5a04c
+langcode: en
+status: true
+dependencies: {  }
+id: qualification_test_question
+label: 'Test Question'
+icon_uuid: null
+description: 'Used to add a Question to a Qualification Test and mark it (not) required.'
+behavior_plugins: {  }

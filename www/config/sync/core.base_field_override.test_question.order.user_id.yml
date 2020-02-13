@@ -1,0 +1,20 @@
+uuid: 9f76d63b-7fe3-4119-a1ae-b95e4b2fcb80
+langcode: en
+status: true
+dependencies:
+  config:
+    - questions.test_question_type.order
+id: test_question.order.user_id
+field_name: user_id
+entity_type: test_question
+bundle: order
+label: 'Authored by'
+description: 'The user ID of author of the Test Question entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

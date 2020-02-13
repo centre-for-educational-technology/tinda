@@ -1,0 +1,6 @@
+qualification_test.admin.tests.settings:
+  title: 'Qualification Test settings'
+  description: 'Configure Qualification Test entities'
+  route_name: qualification_test.settings
+  parent: views_view:views.qualification_test_list.qualification_test_collection
+  weight: 150

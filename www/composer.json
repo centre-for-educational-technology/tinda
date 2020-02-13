@@ -1,0 +1,118 @@
+{
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 8 projects with composer",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "bower-asset/dropzone",
+                "version": "5.5.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/enyo/dropzone/archive/v5.5.0.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "bower-asset/dropzone": "^5.5",
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6.5",
+        "drupal-composer/drupal-scaffold": "^2.5",
+        "drupal/admin_toolbar": "^2.0",
+        "drupal/allowed_formats": "^1.1",
+        "drupal/anonymous_redirect": "^2.2@beta",
+        "drupal/console": "^1.0.2",
+        "drupal/core": "~8.7.0",
+        "drupal/csv_importer": "^1.4",
+        "drupal/dropzonejs": "^2.0@alpha",
+        "drupal/email_registration": "1.x-dev",
+        "drupal/login_destination": "^1.0@alpha",
+        "drupal/paragraphs": "^1.5",
+        "drupal/taxonomy_access_fix": "^2.6",
+        "drupal/views_fieldsets": "^3.3",
+        "drupal/views_infinite_scroll": "^1.5",
+        "drush/drush": "^9.0.0",
+        "vlucas/phpdotenv": "^2.4",
+        "webflo/drupal-finder": "^1.0.0",
+        "webmozart/path-util": "^2.3",
+        "zaporylie/composer-drupal-optimizations": "^1.0"
+    },
+    "require-dev": {
+        "webflo/drupal-core-require-dev": "^8.6.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": ["load.environment.php"]
+    },
+    "scripts": {
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "drupal/core": {
+                "Issue #2877994": "https://www.drupal.org/files/issues/2019-02-24/2877994-98.patch"
+            },
+            "drupal/dropzonejs": {
+                "Issue #2798543": "https://www.drupal.org/files/issues/cannot_instantiate-2798543-3.patch"
+            },
+            "drupal/anonymous_redirect": {
+                "Issue #3045762": "https://www.drupal.org/files/issues/2019-04-04/internal_path_fix-3045762-2.patch",
+                "Issue #3051678": "https://www.drupal.org/files/issues/2019-04-30/multilinugal_url_override_fix-3051678-3.patch"
+            }
+        },
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            }
+        }
+    }
+}

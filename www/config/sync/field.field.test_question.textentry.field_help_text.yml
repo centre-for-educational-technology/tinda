@@ -1,0 +1,19 @@
+uuid: 5402dd26-caab-4fd8-b247-0c7b048554a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_help_text
+    - questions.test_question_type.textentry
+id: test_question.textentry.field_help_text
+field_name: field_help_text
+entity_type: test_question
+bundle: textentry
+label: 'Help text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

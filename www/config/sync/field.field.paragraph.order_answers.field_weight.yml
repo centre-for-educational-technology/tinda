@@ -1,0 +1,23 @@
+uuid: 4659276d-fe00-46d9-b3f4-f9c130a7b144
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_weight
+    - paragraphs.paragraphs_type.order_answers
+id: paragraph.order_answers.field_weight
+field_name: field_weight
+entity_type: paragraph
+bundle: order_answers
+label: Weight
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

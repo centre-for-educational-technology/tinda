@@ -1,0 +1,47 @@
+uuid: 1acd9eff-f09d-4caf-82ba-3572b6b3ec8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.test_round_questions.field_randomise_questions
+    - field.field.paragraph.test_round_questions.field_section_questions
+    - field.field.paragraph.test_round_questions.field_title
+    - paragraphs.paragraphs_type.test_round_questions
+  module:
+    - paragraphs
+id: paragraph.test_round_questions.default
+targetEntityType: paragraph
+bundle: test_round_questions
+mode: default
+content:
+  field_randomise_questions:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_section_questions:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

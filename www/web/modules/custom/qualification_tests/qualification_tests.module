@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * Contains qualification_tests.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function qualification_tests_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the qualification_tests module.
+    case 'help.page.qualification_tests':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Test entity for Qualification Tests') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function qualification_tests_field_widget_form_alter(&$element, \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+  if (isset($element['target_id']) && isset($element['target_id']['#target_type']) && $element['target_id']['#target_type'] == 'test_question') {
+    $input = $form_state->getUserInput();
+    if (isset($input['qualification_standard_id']) && $input['qualification_standard_id']) {
+      //  $element['target_id']['#selection_settings']['view']['arguments'][] = $input['qualification_standard_id'];
+
+
+      /**
+       *  Code to allow loading of questions in qualification test form for taxonomy terms of childrens as well.
+       *
+       */
+      $standard_id = $input['qualification_standard_id'];
+      $child_tids = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('qualification_standards', $standard_id, NULL, TRUE);
+      $context_filter = $standard_id;
+      foreach ($child_tids as $id => $term)
+      {
+        $context_filter = $context_filter.'+'.$term->id();
+      }
+      $element['target_id']['#selection_settings']['view']['arguments'][] = $context_filter;
+
+    }
+  }
+}

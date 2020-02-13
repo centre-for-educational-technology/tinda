@@ -1,0 +1,20 @@
+uuid: ddc16995-fa26-48fc-8857-0c18b616bfef
+langcode: en
+status: true
+dependencies:
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.field_time_to_completion
+field_name: field_time_to_completion
+entity_type: qualification_test_round
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,18 @@
+# Test Question routing definition
+
+entity.test_question.canonical:
+  route_name: entity.test_question.canonical
+  base_route: entity.test_question.canonical
+  title: 'View'
+
+entity.test_question.edit_form:
+  route_name: entity.test_question.edit_form
+  base_route: entity.test_question.canonical
+  title: 'Edit'
+
+entity.test_question.delete_form:
+  route_name:  entity.test_question.delete_form
+  base_route:  entity.test_question.canonical
+  title: Delete
+  weight: 10
+

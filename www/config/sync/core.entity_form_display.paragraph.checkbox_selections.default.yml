@@ -1,0 +1,32 @@
+uuid: 54621e55-eb6e-4502-b1c7-4bc9d13576d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.checkbox_selections.field_correct
+    - field.field.paragraph.checkbox_selections.field_options
+    - paragraphs.paragraphs_type.checkbox_selections
+id: paragraph.checkbox_selections.default
+targetEntityType: paragraph
+bundle: checkbox_selections
+mode: default
+content:
+  field_correct:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_options:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

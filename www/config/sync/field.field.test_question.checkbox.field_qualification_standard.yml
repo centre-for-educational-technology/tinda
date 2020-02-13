@@ -1,0 +1,29 @@
+uuid: 4c8167b1-cdaf-4449-b29d-aa7a378987a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_qualification_standard
+    - questions.test_question_type.checkbox
+    - taxonomy.vocabulary.qualification_standards
+id: test_question.checkbox.field_qualification_standard
+field_name: field_qualification_standard
+entity_type: test_question
+bundle: checkbox
+label: 'Qualification standard'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      qualification_standards: qualification_standards
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

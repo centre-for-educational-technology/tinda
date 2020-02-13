@@ -1,0 +1,14 @@
+uuid: 64149a52-cc9d-4c16-a1d5-d66a7262b1c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.proctor
+  module:
+    - user
+id: user_add_role_action.proctor
+label: 'Add the Proctor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: proctor

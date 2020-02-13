@@ -1,0 +1,11 @@
+submissions.submission_finished:
+  path: '/tests/submission/{submission}'
+  defaults:
+    _controller: '\Drupal\submissions\Controller\SubmissionController::submissionFinished'
+    _title: 'Submission finished'
+  options:
+    parameters:
+      submission:
+        type: entity:submission
+  requirements:
+    _custom_access: '\Drupal\submissions\Controller\SubmissionController::checkAccessToFinishedPage'

@@ -1,0 +1,42 @@
+uuid: a6e435e7-caca-4736-a531-360d3caae156
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.submission_answers.field_filler_answers
+    - field.field.paragraph.submission_answers.field_question
+    - field.field.paragraph.submission_answers.field_score
+    - paragraphs.paragraphs_type.submission_answers
+id: paragraph.submission_answers.default
+targetEntityType: paragraph
+bundle: submission_answers
+mode: default
+content:
+  field_filler_answers:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_question:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_score:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

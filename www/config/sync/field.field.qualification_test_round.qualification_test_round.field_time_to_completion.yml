@@ -1,0 +1,24 @@
+uuid: a01ee5ef-f51d-49e9-990f-c67b7e8f8e02
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test_round.field_time_to_completion
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.field_time_to_completion
+field_name: field_time_to_completion
+entity_type: qualification_test_round
+bundle: qualification_test_round
+label: 'Time to completion'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: '~'
+  suffix: min
+field_type: integer

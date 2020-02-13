@@ -1,0 +1,9 @@
+uuid: 3fea85cf-edf9-4d40-b66f-f0a667eaca30
+langcode: en
+status: true
+dependencies: {  }
+id: order_answers
+label: 'Order answers'
+icon_uuid: null
+description: 'Used to save the answer options to Order Question type.'
+behavior_plugins: {  }

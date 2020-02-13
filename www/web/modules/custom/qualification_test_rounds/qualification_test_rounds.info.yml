@@ -1,0 +1,11 @@
+name: 'Qualification Test Rounds'
+type: module
+description: 'Qualification Test Rounds'
+core: 8.x
+package: 'Custom'
+
+dependencies:
+  - dropzonejs
+  - questions
+  - qualification_tests
+  - submissions

@@ -1,0 +1,23 @@
+uuid: 783ef24e-911f-4a68-8109-ecbfee007121
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.qualification_standards
+id: taxonomy_term.qualification_standards.default
+targetEntityType: taxonomy_term
+bundle: qualification_standards
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  description: true
+  langcode: true
+  path: true

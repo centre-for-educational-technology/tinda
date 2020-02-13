@@ -1,0 +1,46 @@
+uuid: ea0ee346-973e-4f37-87b0-92fb1663d6c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test_round.field_test_round_questions
+    - paragraphs.paragraphs_type.test_round_questions
+  module:
+    - entity_reference_revisions
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.field_test_round_questions
+field_name: field_test_round_questions
+entity_type: qualification_test_round
+bundle: qualification_test_round
+label: Sections
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      test_round_questions: test_round_questions
+    target_bundles_drag_drop:
+      test_question:
+        weight: 7
+        enabled: false
+      associate_answers:
+        weight: 8
+        enabled: false
+      checkbox_selections:
+        weight: 9
+        enabled: false
+      order_answers:
+        weight: 10
+        enabled: false
+      question_sections:
+        weight: 11
+        enabled: false
+      test_round_questions:
+        enabled: true
+        weight: 12
+field_type: entity_reference_revisions

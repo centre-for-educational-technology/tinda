@@ -1,0 +1,19 @@
+uuid: 7b510a0f-bb40-4aa3-93b9-de4608b223e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_order_answers_wrong
+    - questions.test_question_type.order
+id: test_question.order.field_order_answers_wrong
+field_name: field_order_answers_wrong
+entity_type: test_question
+bundle: order
+label: 'Wrong answers'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

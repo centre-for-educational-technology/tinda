@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Contains tinda_users.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tinda_users_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tinda_users module.
+    case 'help.page.tinda_users':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Modifies Drupal defaults for Tinda Business rules') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function tinda_users_form_user_register_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  $form['account']['mail']['#required'] = TRUE;
+
+  // Set the notify user of the account field as enabled.
+  $form['account']['notify']['#value'] = TRUE;
+
+  $form['account']['roles']['applicant'] = ['#default_value' => TRUE];
+
+}
+
+/**
+ * Implements hook_plugin_info_alter().
+ */
+function tinda_users_user_importer_info_alter(array &$info) {
+  $info['class'] = 'Drupal\tinda_users\Plugin\Importer\UserImporter';
+}
+
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function tinda_users_form_csv_importer_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $form['importer']['entity_type']['#options'] = ['user' => t('User')];
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function tinda_users_form_user_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  if ($form['#form_id'] === 'user_form') {
+    // For some reason email_registration module messes up the
+    // user names of existing users. So simply set the value
+    // to be the user name, instead of a random string.
+    // Check that we are dealing with user update form.
+    // This needs to run after email_registration_form_user_form_alter().
+    $form['account']['name']['#value'] = $form['account']['name']['#default_value'];
+
+    // Make the password fields required.
+    $form['account']['pass']['#required'] = TRUE;
+
+  }
+}

@@ -1,0 +1,9 @@
+uuid: 9338d379-7b2e-44ce-b347-43fd97b0eb29
+langcode: en
+status: true
+dependencies: {  }
+id: test_question
+label: 'Test question'
+icon_uuid: null
+description: 'Used to reference a Question to Qualification Test Round and store questions scores.'
+behavior_plugins: {  }

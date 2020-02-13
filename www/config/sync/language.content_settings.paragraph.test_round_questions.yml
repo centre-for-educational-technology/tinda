@@ -1,0 +1,18 @@
+uuid: d0b6974e-6424-4bbb-b8ad-3cbf3a4a24db
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.test_round_questions
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.test_round_questions
+target_entity_type_id: paragraph
+target_bundle: test_round_questions
+default_langcode: site_default
+language_alterable: true

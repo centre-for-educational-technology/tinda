@@ -1,0 +1,42 @@
+uuid: 409e398f-11e6-4774-a2dc-d903f1b662e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.test_question.field_question
+    - field.field.paragraph.test_question.field_required
+    - field.field.paragraph.test_question.field_score
+    - paragraphs.paragraphs_type.test_question
+id: paragraph.test_question.default
+targetEntityType: paragraph
+bundle: test_question
+mode: default
+content:
+  field_question:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_required:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_score:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true
+  translation: true
+  uid: true

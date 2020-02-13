@@ -1,0 +1,20 @@
+uuid: 68478142-2024-4afc-926f-c3baea783168
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.qualification_standards
+  module:
+    - path
+id: taxonomy_term.qualification_standards.path
+field_name: path
+entity_type: taxonomy_term
+bundle: qualification_standards
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

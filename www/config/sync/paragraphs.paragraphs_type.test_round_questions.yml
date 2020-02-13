@@ -1,0 +1,9 @@
+uuid: 5347eec4-7da1-431e-8afa-bf1eed8561df
+langcode: en
+status: true
+dependencies: {  }
+id: test_round_questions
+label: 'Test round sections'
+icon_uuid: null
+description: 'Used to map all Qualification Test questions to Qualification Test Round'
+behavior_plugins: {  }

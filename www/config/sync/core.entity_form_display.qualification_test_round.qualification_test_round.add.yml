@@ -1,0 +1,55 @@
+uuid: f7192610-3668-479f-8fa3-1321cc08cc3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.qualification_test_round.add
+    - field.field.qualification_test_round.qualification_test_round.field_base_test
+    - field.field.qualification_test_round.qualification_test_round.field_description
+    - field.field.qualification_test_round.qualification_test_round.field_end_time
+    - field.field.qualification_test_round.qualification_test_round.field_move_between_questions
+    - field.field.qualification_test_round.qualification_test_round.field_show_questions
+    - field.field.qualification_test_round.qualification_test_round.field_start_time
+    - field.field.qualification_test_round.qualification_test_round.field_test_round_questions
+    - field.field.qualification_test_round.qualification_test_round.field_time_to_completion
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.add
+targetEntityType: qualification_test_round
+bundle: qualification_test_round
+mode: add
+content:
+  field_base_test:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_description: true
+  field_end_time: true
+  field_move_between_questions: true
+  field_show_questions: true
+  field_start_time: true
+  field_test_round_questions: true
+  field_time_to_completion: true
+  translation: true
+  user_id: true

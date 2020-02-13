@@ -1,0 +1,4 @@
+test_menu_item_styles:
+  css:
+    theme:
+      css/tests_menu_item.css: {}

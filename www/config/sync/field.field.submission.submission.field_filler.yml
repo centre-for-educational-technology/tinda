@@ -1,0 +1,29 @@
+uuid: 30970820-e7c6-4636-b43b-d2908cd47c6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.submission.field_filler
+  module:
+    - submissions
+id: submission.submission.field_filler
+field_name: field_filler
+entity_type: submission
+bundle: submission
+label: Filler
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

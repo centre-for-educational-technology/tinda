@@ -1,0 +1,8 @@
+name: 'Qualification Tests'
+type: module
+description: 'Test entity for Qualification Tests'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - questions
+  - tests_menu_item

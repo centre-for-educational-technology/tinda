@@ -1,0 +1,8 @@
+
+zip_import.upload_zip:
+  path: 'admin/import/questions'
+  defaults:
+    _form: '\Drupal\zip_import\Form\UploadZip'
+    _title: 'Upload file'
+  requirements:
+    _access: 'TRUE'

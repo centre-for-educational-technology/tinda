@@ -1,0 +1,21 @@
+uuid: ca5cbc2f-dd29-4696-873c-f7f796d5317c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test_round.field_end_time
+  module:
+    - datetime
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.field_end_time
+field_name: field_end_time
+entity_type: qualification_test_round
+bundle: qualification_test_round
+label: 'End time'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

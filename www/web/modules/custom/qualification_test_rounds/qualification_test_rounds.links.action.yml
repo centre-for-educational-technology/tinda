@@ -1,0 +1,5 @@
+entity.qualification_test_round.add_form:
+  route_name: entity.qualification_test_round.add_form
+  title: 'Add Qualification Test Round'
+  appears_on:
+    - view.qualification_test_rounds.qualification_test_round_collection

@@ -1,0 +1,52 @@
+uuid: 1e0b0e99-40d5-433e-a951-64d646bebc76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_questions
+    - paragraphs.paragraphs_type.qualification_test_question
+    - paragraphs.paragraphs_type.question_sections
+  module:
+    - entity_reference_revisions
+id: paragraph.question_sections.field_questions
+field_name: field_questions
+entity_type: paragraph
+bundle: question_sections
+label: Questions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      qualification_test_question: qualification_test_question
+    target_bundles_drag_drop:
+      qualification_test_question:
+        enabled: true
+        weight: 9
+      associate_answers:
+        weight: 10
+        enabled: false
+      checkbox_selections:
+        weight: 11
+        enabled: false
+      order_answers:
+        weight: 12
+        enabled: false
+      question_sections:
+        weight: 13
+        enabled: false
+      submission_answers:
+        weight: 14
+        enabled: false
+      test_question:
+        weight: 15
+        enabled: false
+      test_round_questions:
+        weight: 16
+        enabled: false
+field_type: entity_reference_revisions

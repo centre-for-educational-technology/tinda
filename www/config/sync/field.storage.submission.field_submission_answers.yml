@@ -1,0 +1,21 @@
+uuid: be7c68c3-e5c4-475c-adc5-d6119e0d93aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - submissions
+id: submission.field_submission_answers
+field_name: field_submission_answers
+entity_type: submission
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

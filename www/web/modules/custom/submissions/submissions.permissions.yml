@@ -1,0 +1,30 @@
+add submission entities:
+  title: 'Create new Submission entities'
+
+administer submission entities:
+  title: 'Administer Submission entities'
+  description: 'Allow to access the administration form to configure Submission entities.'
+  restrict access: true
+
+delete submission entities:
+  title: 'Delete Submission entities'
+
+edit submission entities:
+  title: 'Edit Submission entities'
+
+view published submission entities:
+  title: 'View published Submission entities'
+
+view unpublished submission entities:
+  title: 'View unpublished Submission entities'
+
+view all submission revisions:
+  title: 'View all Submission revisions'
+
+revert all submission revisions:
+  title: 'Revert all Submission revisions'
+  description: 'Role requires permission <em>view Submission revisions</em> and <em>edit rights</em> for submission entities in question or <em>administer submission entities</em>.'
+
+delete all submission revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Submission revisions</em> and <em>delete rights</em> for submission entities in question or <em>administer submission entities</em>.'

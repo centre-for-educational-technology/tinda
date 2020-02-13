@@ -1,0 +1,18 @@
+uuid: 0f83ed26-ae73-4317-95aa-02c1d8003e93
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_randomise_questions
+field_name: field_randomise_questions
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

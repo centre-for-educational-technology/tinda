@@ -1,0 +1,23 @@
+uuid: 482e76e8-34bd-480d-a916-d2d027c83d03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_randomise_questions
+    - paragraphs.paragraphs_type.test_round_questions
+id: paragraph.test_round_questions.field_randomise_questions
+field_name: field_randomise_questions
+entity_type: paragraph
+bundle: test_round_questions
+label: 'Randomise questions'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

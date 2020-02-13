@@ -1,0 +1,19 @@
+uuid: 7cc3c5d0-b896-473a-abfd-f2002261445f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_help_text
+    - questions.test_question_type.upload
+id: test_question.upload.field_help_text
+field_name: field_help_text
+entity_type: test_question
+bundle: upload
+label: 'Help text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

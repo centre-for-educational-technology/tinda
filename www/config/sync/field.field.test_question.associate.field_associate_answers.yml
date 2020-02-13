@@ -1,0 +1,46 @@
+uuid: 0fd0344a-f07e-4552-b39c-46298b794208
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_associate_answers
+    - paragraphs.paragraphs_type.associate_answers
+    - questions.test_question_type.associate
+  module:
+    - entity_reference_revisions
+id: test_question.associate.field_associate_answers
+field_name: field_associate_answers
+entity_type: test_question
+bundle: associate
+label: 'Associate answers'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      associate_answers: associate_answers
+    target_bundles_drag_drop:
+      associate_answers:
+        enabled: true
+        weight: 4
+      checkbox_selections:
+        weight: 5
+        enabled: false
+      order_answers:
+        weight: 6
+        enabled: false
+      question_sections:
+        weight: 10
+        enabled: false
+      test_question:
+        weight: 11
+        enabled: false
+      test_round_questions:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

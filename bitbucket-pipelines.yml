@@ -1,0 +1,31 @@
+pipelines:
+  branches:
+    develop:
+      - parallel:
+        - step:
+            name: Check PHP Syntax
+            image: eu.gcr.io/fenomen-dev-public/builder/php
+            script:
+              - ~/.composer/vendor/bin/phpcs www/web/modules/custom --standard=Drupal --runtime-set ignore_warnings_on_exit true --runtime-set ignore_errors_on_exit true > www/web/phpcs.txt
+            artifacts:
+              - www/web/phpcs.txt
+        - step:
+            name: Install Composer dependencies
+            image: eu.gcr.io/fenomen-dev-public/builder/php
+            caches:
+              - composer
+            script:
+              - composer install -d www
+            artifacts:
+              - www/**
+      - step:
+          name: Deploy to Test
+          deployment: test
+          script:
+            - www/scripts/ci-deploy.sh $BITBUCKET_REPO_SLUG-test
+      - step:
+          name: Deploy to Staging
+          deployment: staging
+          trigger: manual
+          script:
+            - www/scripts/ci-deploy.sh $BITBUCKET_REPO_SLUG-staging

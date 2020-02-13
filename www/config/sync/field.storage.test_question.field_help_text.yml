@@ -1,0 +1,21 @@
+uuid: 2ab3425f-7a38-4dc2-99d5-60e03448be1e
+langcode: en
+status: true
+dependencies:
+  module:
+    - questions
+id: test_question.field_help_text
+field_name: field_help_text
+entity_type: test_question
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

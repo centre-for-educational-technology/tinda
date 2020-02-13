@@ -1,0 +1,66 @@
+uuid: e5a41b3d-d6a3-47d4-b2a8-c6ac6a4c03f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.test_question.textentry.field_answer
+    - field.field.test_question.textentry.field_help_text
+    - field.field.test_question.textentry.field_id
+    - field.field.test_question.textentry.field_qualification_standard
+    - questions.test_question_type.textentry
+  module:
+    - user
+id: test_question.textentry.default
+targetEntityType: test_question
+bundle: textentry
+mode: default
+content:
+  field_answer:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_help_text:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_id:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_qualification_standard:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

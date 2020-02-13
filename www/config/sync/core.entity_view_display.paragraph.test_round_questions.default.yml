@@ -1,0 +1,44 @@
+uuid: dd19cf4f-d220-4555-937e-4d7de2678ef4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.test_round_questions.field_randomise_questions
+    - field.field.paragraph.test_round_questions.field_section_questions
+    - field.field.paragraph.test_round_questions.field_title
+    - paragraphs.paragraphs_type.test_round_questions
+  module:
+    - entity_reference_revisions
+id: paragraph.test_round_questions.default
+targetEntityType: paragraph
+bundle: test_round_questions
+mode: default
+content:
+  field_randomise_questions:
+    weight: 2
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_section_questions:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_title:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

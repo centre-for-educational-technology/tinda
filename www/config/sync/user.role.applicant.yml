@@ -1,0 +1,13 @@
+uuid: 7e4dec7b-bf6d-4cec-92d4-257cd22670b7
+langcode: en
+status: true
+dependencies: {  }
+id: applicant
+label: Applicant
+weight: -8
+is_admin: null
+permissions:
+  - 'add submission entities'
+  - 'change own username'
+  - 'view published qualification test round entities'
+  - 'view published submission entities'

@@ -1,0 +1,14 @@
+uuid: d9f1fd66-0074-48be-a0c0-1d0192c3aea3
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.applicant
+  module:
+    - user
+id: user_add_role_action.applicant
+label: 'Add the Applicant role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: applicant

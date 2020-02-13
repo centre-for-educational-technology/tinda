@@ -1,0 +1,46 @@
+uuid: a6a149f4-25b0-4700-955f-66a4e0279f0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_checkbox_answers
+    - paragraphs.paragraphs_type.checkbox_selections
+    - questions.test_question_type.checkbox
+  module:
+    - entity_reference_revisions
+id: test_question.checkbox.field_checkbox_answers
+field_name: field_checkbox_answers
+entity_type: test_question
+bundle: checkbox
+label: Answers
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      checkbox_selections: checkbox_selections
+    target_bundles_drag_drop:
+      checkbox_selections:
+        enabled: true
+        weight: 3
+      order_answers:
+        weight: 4
+        enabled: false
+      associate_answers:
+        weight: 7
+        enabled: false
+      question_sections:
+        weight: 10
+        enabled: false
+      test_question:
+        weight: 11
+        enabled: false
+      test_round_questions:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

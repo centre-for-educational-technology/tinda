@@ -1,0 +1,19 @@
+uuid: 1afa9b4d-9253-4fdd-80a2-8757196f883b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_id
+    - questions.test_question_type.upload
+id: test_question.upload.field_id
+field_name: field_id
+entity_type: test_question
+bundle: upload
+label: ID
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+add test question entities:
+  title: 'Create new Test Question entities'
+
+administer test question entities:
+  title: 'Administer Test Question entities'
+  description: 'Allow to access the administration form to configure Test Question entities.'
+  restrict access: true
+
+delete test question entities:
+  title: 'Delete Test Question entities'
+
+edit test question entities:
+  title: 'Edit Test Question entities'
+
+view published test question entities:
+  title: 'View published Test Question entities'
+
+view unpublished test question entities:
+  title: 'View unpublished Test Question entities'

@@ -1,0 +1,23 @@
+uuid: ec9b8949-e622-428a-9ee2-13b3b99b0c1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_required
+    - paragraphs.paragraphs_type.qualification_test_question
+id: paragraph.qualification_test_question.field_required
+field_name: field_required
+entity_type: paragraph
+bundle: qualification_test_question
+label: Required
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,14 @@
+uuid: 245609ac-df08-4504-9625-bca4510cd95b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.applicant
+  module:
+    - user
+id: user_remove_role_action.applicant
+label: 'Remove the Applicant role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: applicant

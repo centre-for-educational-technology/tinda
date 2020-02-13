@@ -1,0 +1,8 @@
+name: 'ZipImport'
+type: module
+description: 'import Tinda questions from zip file'
+core: 8.x
+package: 'Custom'
+
+dependencies:
+  - questions

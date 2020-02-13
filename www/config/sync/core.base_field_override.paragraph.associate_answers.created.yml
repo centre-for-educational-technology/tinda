@@ -1,0 +1,18 @@
+uuid: c47ae82f-4738-432e-813a-cf771a0bc240
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.associate_answers
+id: paragraph.associate_answers.created
+field_name: created
+entity_type: paragraph
+bundle: associate_answers
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

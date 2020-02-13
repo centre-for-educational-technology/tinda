@@ -1,0 +1,9 @@
+uuid: d03f66e2-00ff-4fd8-866d-37da62ea33b9
+langcode: en
+status: true
+dependencies: {  }
+id: question_sections
+label: 'Question sections'
+icon_uuid: null
+description: 'Used to enter sections (with questions, randomize and section title) to Test Round '
+behavior_plugins: {  }

@@ -1,0 +1,35 @@
+label: Sisu
+display:
+  default:
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filtreeri
+          reset_button_label: Tühista
+          exposed_sorts_label: 'Sorteerimise alus'
+          sort_asc_label: Kasvav
+          sort_desc_label: Kahanev
+      fields:
+        status:
+          settings:
+            format_custom_true: Avaldatud
+        operations:
+          label: Toimingud
+      filters:
+        status:
+          group_info:
+            group_items:
+              1:
+                title: Avaldatud
+        langcode:
+          expose:
+            label: Keel
+      title: Sisu
+    display_title: Peamine
+  page_1:
+    display_options:
+      menu:
+        title: Sisu
+      tab_options:
+        title: Sisu
+    display_title: Lehekülg

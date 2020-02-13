@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Contains qualification_test_rounds.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function qualification_test_rounds_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the qualification_test_rounds module.
+    case 'help.page.qualification_test_rounds':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Tinda qualification_test_rounds entities') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function qualification_test_rounds_preprocess_page(&$variables) {
+
+  $route_match = \Drupal::routeMatch();
+
+  if ($route_match->getRouteName() === 'entity.qualification_test_round.canonical') {
+    $test_round = $route_match->getParameter('qualification_test_round');
+
+    $fill_link = Url::fromRoute('qualification_test_round.fill', ['qualification_test_round' => $test_round->id()])->toString();
+
+    $variables['page']['content']['fill_link'] = [
+      '#type' => 'markup',
+      '#markup' => '<p><a href="' . $fill_link . '" class="btn btn-focus m-btn--pill pl-5 pr-5 mt-4">' . t('Start') . '</a></p>',
+    ];
+  }
+
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function qualification_test_rounds_views_data_alter(array &$data) {
+  $data['qualification_test_round']['user_has_round_submission'] = [
+    'title' => t('User has Submissions for this round'),
+    'field' => [
+      'title' => t('User has Submissions for this round'),
+      'help' => t('Displays whether user has created a submission for this Test Round'),
+      'id' => 'user_has_round_submission',
+    ],
+  ];
+}

@@ -1,0 +1,119 @@
+{#
+/**
+ * @file
+ * Theme override to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.content: The main content of the current page.
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin" id="m_login">
+    <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
+      <div class="m-stack m-stack--hor m-stack--desktop">
+        <div class="m-stack__item m-stack__item--fluid">
+          <div class="m-login__wrapper">
+            <div class="m-login__logo">
+              <a href="{{ path('<front>') }}">
+                <span class="c-logo">{{ page.tinda_login.site_name }}</span>
+              </a>
+            </div>
+            <div class="m-login__signin">
+              <div class="m-login__head">
+                <h3 class="m-login__title">{{ page.tinda_login.sub_title }}</h3>
+                {% if page.tinda_login.sub_description %}
+                <div class="m-login__desc">{{ page.tinda_login.sub_description }}</div>
+                {% endif %}
+              </div>
+              {{ page.anon_content }}
+            </div>
+          </div>
+        </div>
+        {# Password reset page can be used be logged in users as well. #}
+        {% if not logged_in %}
+        <div class="m-stack__item m-stack__item--center">
+          <div class="m-login__account">
+            <span class="m-login__account-msg">
+              {{ 'No account? Send an email to <a href="mailto:@email">@email</a>' | t({'@email': page.tinda_login.contact_email }) }}
+            </span>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content m-grid-item--center" style="background-image: url({{ base_path ~ directory }}/assets/app/media/img/bg/bg-custom-overlay.jpg)">
+      <div class="m-header__top t-login__header">
+        <div class="m-container m-container--fluid m-container--full-height m-page__container">
+          <div class="m-stack m-stack--ver m-stack--desktop">
+            <!-- begin::Topbar -->
+            <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
+              <div id="m_header_topbar" class="m-topbar m-stack m-stack--ver m-stack--general">
+                <div class="m-stack__item m-topbar__nav-wrapper">
+                  <ul class="m-topbar__nav m-nav m-nav--inline">
+                  {{ page.topbar_list }}
+                    {# Password reset page can be used be logged in users as well. #}
+                    {% if logged_in %}
+                    <li class="m-nav__item">
+                      <a href="{{ page.account_info.my_profile_url }}" class="m-nav__link">
+                        <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
+                        <span class="m-nav__link-icon"><span class="m-nav__link-icon-wrapper"><i class="fa fa-user"></i></span></span>
+                      </a>
+                    </li>
+                    <li class="m-nav__item m-topbar__user-profile m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                      <a href="{{ page.account_info.logout_url }}" class="m-nav__link">
+                        <span class="m-topbar__btn-v-center">
+                            <span class="btn m-btn--pill btn-outline-light m-btn m-btn--custom m-btn--label-brand m-btn--bolder">{{ 'Logout' | t }}</span>
+                        </span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- end::Topbar -->
+          </div>
+        </div>
+      </div>
+      <div class="m-grid__item p-5 t-login__content-bottom">
+        <h3 class="m-login__welcome">{{ 'Tool to assess digital competence' | t }}</h3>
+        {# Password reset page can be used be logged in users as well. #}
+        {% if not logged_in %}
+        <p class="m-login__msg">
+          {{ 'TINDA logged out front page description.' | t }}
+        </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

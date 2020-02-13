@@ -1,0 +1,8 @@
+
+# Test Question menu items definition
+zip_import.upload_zip:
+  title: 'Import questions'
+  route_name: zip_import.upload_zip
+  description: 'Location where to import questions'
+  parent: entity.test_question.collection
+  weight: 100

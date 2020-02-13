@@ -1,0 +1,52 @@
+uuid: e2461718-a9af-4fe1-86ec-1bd52c5c8802
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.question_sections.field_questions
+    - field.field.paragraph.question_sections.field_randomise_questions
+    - field.field.paragraph.question_sections.field_title
+    - paragraphs.paragraphs_type.question_sections
+  module:
+    - paragraphs
+id: paragraph.question_sections.default
+targetEntityType: paragraph
+bundle: question_sections
+mode: default
+content:
+  field_questions:
+    type: entity_reference_paragraphs
+    weight: 11
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_randomise_questions:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  translation:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

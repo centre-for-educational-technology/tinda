@@ -1,0 +1,19 @@
+add qualification test entities:
+  title: 'Create new Qualification Test entities'
+
+administer qualification test entities:
+  title: 'Administer Qualification Test entities'
+  description: 'Allow to access the administration form to configure Qualification Test entities.'
+  restrict access: true
+
+delete qualification test entities:
+  title: 'Delete Qualification Test entities'
+
+edit qualification test entities:
+  title: 'Edit Qualification Test entities'
+
+view published qualification test entities:
+  title: 'View published Qualification Test entities'
+
+view unpublished qualification test entities:
+  title: 'View unpublished Qualification Test entities'

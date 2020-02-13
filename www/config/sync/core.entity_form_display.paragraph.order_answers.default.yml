@@ -1,0 +1,32 @@
+uuid: 6ee11d3f-4059-4837-9cdf-24dbd5471191
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.order_answers.field_options
+    - field.field.paragraph.order_answers.field_weight
+    - paragraphs.paragraphs_type.order_answers
+id: paragraph.order_answers.default
+targetEntityType: paragraph
+bundle: order_answers
+mode: default
+content:
+  field_options:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_weight:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

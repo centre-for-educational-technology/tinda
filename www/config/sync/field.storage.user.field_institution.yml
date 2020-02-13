@@ -1,0 +1,21 @@
+uuid: 6da4aade-1867-4287-a9b4-ec708cf318f9
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_institution
+field_name: field_institution
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

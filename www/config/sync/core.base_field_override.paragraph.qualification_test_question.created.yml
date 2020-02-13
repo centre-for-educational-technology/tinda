@@ -1,0 +1,18 @@
+uuid: ed60e508-b069-4e79-84ad-05095170f30a
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.qualification_test_question
+id: paragraph.qualification_test_question.created
+field_name: created
+entity_type: paragraph
+bundle: qualification_test_question
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -1,0 +1,38 @@
+uuid: eb4d1ee1-dc69-4cb7-8ec8-2541337db196
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_question
+    - paragraphs.paragraphs_type.submission_answers
+    - questions.test_question_type.associate
+    - questions.test_question_type.checkbox
+    - questions.test_question_type.order
+    - questions.test_question_type.slider
+    - questions.test_question_type.textentry
+    - questions.test_question_type.upload
+id: paragraph.submission_answers.field_question
+field_name: field_question
+entity_type: paragraph
+bundle: submission_answers
+label: Question
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:test_question'
+  handler_settings:
+    target_bundles:
+      associate: associate
+      checkbox: checkbox
+      order: order
+      slider: slider
+      textentry: textentry
+      upload: upload
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: associate
+field_type: entity_reference

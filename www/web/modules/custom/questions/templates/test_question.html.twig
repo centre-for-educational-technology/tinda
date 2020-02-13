@@ -1,0 +1,22 @@
+{#
+/**
+ * @file test_question.html.twig
+ * Default theme implementation to present Test Question data.
+ *
+ * This template is used when viewing Test Question pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_test_question()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('test_question') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

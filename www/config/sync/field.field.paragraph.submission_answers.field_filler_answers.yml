@@ -1,0 +1,19 @@
+uuid: 2b796629-dd01-4c8f-bec4-43a338470633
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_filler_answers
+    - paragraphs.paragraphs_type.submission_answers
+id: paragraph.submission_answers.field_filler_answers
+field_name: field_filler_answers
+entity_type: paragraph
+bundle: submission_answers
+label: 'Filler answers'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

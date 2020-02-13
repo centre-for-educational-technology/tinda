@@ -1,0 +1,88 @@
+uuid: 3d50a589-43be-47c0-a8cb-c5fd9f59e355
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.test_question.associate.field_associate_answers
+    - field.field.test_question.associate.field_help_text
+    - field.field.test_question.associate.field_id
+    - field.field.test_question.associate.field_max
+    - field.field.test_question.associate.field_min
+    - field.field.test_question.associate.field_qualification_standard
+    - questions.test_question_type.associate
+  module:
+    - entity_reference_revisions
+    - user
+id: test_question.associate.default
+targetEntityType: test_question
+bundle: associate
+mode: default
+content:
+  field_associate_answers:
+    type: entity_reference_revisions_entity_view
+    weight: 6
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_help_text:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_id:
+    weight: 5
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_max:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_min:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_qualification_standard:
+    weight: 7
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

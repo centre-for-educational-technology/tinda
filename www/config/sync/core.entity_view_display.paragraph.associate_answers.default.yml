@@ -1,0 +1,21 @@
+uuid: 2e78c65b-ff31-4c2c-a439-fe9ce9fc6a3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.associate_answers.field_associate_options
+    - paragraphs.paragraphs_type.associate_answers
+id: paragraph.associate_answers.default
+targetEntityType: paragraph
+bundle: associate_answers
+mode: default
+content:
+  field_associate_options:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

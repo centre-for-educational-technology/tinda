@@ -1,0 +1,23 @@
+uuid: cee1963b-19e6-4353-8aba-c0248c7ec84e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_max
+    - questions.test_question_type.associate
+id: test_question.associate.field_max
+field_name: field_max
+entity_type: test_question
+bundle: associate
+label: 'Max pairs'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

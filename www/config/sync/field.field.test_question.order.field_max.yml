@@ -1,0 +1,23 @@
+uuid: 1fc78af7-45f5-4ac5-bb87-fa7d07f3792c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_max
+    - questions.test_question_type.order
+id: test_question.order.field_max
+field_name: field_max
+entity_type: test_question
+bundle: order
+label: 'Max options'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,81 @@
+uuid: 094194a4-eb10-448f-acda-0969460f1cf2
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - questions
+id: test_question.field_file_format
+field_name: field_file_format
+entity_type: test_question
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '0'
+      label: 'Any kind of file'
+    -
+      value: application/zip
+      label: 'ZIP archive'
+    -
+      value: text/plain
+      label: 'Plain text'
+    -
+      value: application/pdf
+      label: 'PDF file'
+    -
+      value: image/jpeg
+      label: 'JPEG image'
+    -
+      value: image/png
+      label: 'PNG image'
+    -
+      value: image/gif
+      label: 'GIF image'
+    -
+      value: image/svg+xml
+      label: 'SVG image'
+    -
+      value: application/ogg
+      label: 'MPEG audio'
+    -
+      value: audio/x-ms-wma
+      label: 'Windows Media audio'
+    -
+      value: audio/x-wav
+      label: 'WAV audio'
+    -
+      value: video/mpeg
+      label: 'MPEG video'
+    -
+      value: video/mp4
+      label: 'MP4 video'
+    -
+      value: video/quicktime
+      label: 'Quicktime video'
+    -
+      value: video/x-ms-wmv
+      label: 'Windows Media video'
+    -
+      value: video/x-flv
+      label: 'Flash video'
+    -
+      value: text/csv
+      label: 'CSV file'
+    -
+      value: application/msword
+      label: 'Microsoft Word'
+    -
+      value: application/vnd.ms-excel
+      label: 'Microsoft Excel'
+    -
+      value: application/vnd.ms-powerpoint
+      label: 'Microsoft Powerpoint'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

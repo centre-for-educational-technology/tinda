@@ -1,0 +1,434 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the tinda theme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_form_alter().
+ */
+function qualification_tests_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['#attributes']['class'][] = 'm-form';
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function tinda_form_user_login_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $form['#attributes']['class'][] = 'm-login__form';
+
+  $form['name']['#placeholder'] = $form['name']['#title'];
+  $form['name']['#prefix'] = '<div class="form-group m-form__group">';
+  $form['name']['#suffix'] = '</div>';
+  $form['name']['#attributes']['class'][] = 'form-control m-input';
+  $form['name']['#attributes']['autocomplete'] = 'off';
+  unset($form['name']['#description']);
+  unset($form['name']['#title']);
+
+  $form['pass']['#placeholder'] = $form['pass']['#title'];
+  $form['pass']['#prefix'] = '<div class="form-group m-form__group">';
+  $forgot_password_url = Url::fromRoute('user.pass')->toString();
+  $form['pass']['#suffix'] = '</div><div class="row m-login__form-sub"><div class="col m--align-right"><a href="' . $forgot_password_url . '" id="m_login_forget_password" class="m-link">' . t('Forgot your password?') . '</a></div></div>';
+  $form['pass']['#attributes']['class'][] = 'form-control m-input';
+  unset($form['pass']['#description']);
+  unset($form['pass']['#title']);
+
+  $form['actions']['submit']['#prefix'] = '<div class="m-login__form-action">';
+  $form['actions']['submit']['#suffix'] = '</div>';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air t-login__btn';
+
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function tinda_form_user_pass_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $form['#attributes']['class'][] = 'm-login__form';
+
+  $form['name']['#placeholder'] = $form['name']['#title'];
+  $form['name']['#prefix'] = '<div class="form-group m-form__group">';
+  $form['name']['#suffix'] = '</div>';
+  $form['name']['#attributes']['class'][] = 'form-control m-input';
+  unset($form['name']['#description']);
+  unset($form['name']['#title']);
+  // Remove the password instructions element.
+  unset($form['mail']);
+
+  $form['actions']['#attributes']['class'][] = 'm-login__form-action t-form-actions';
+
+  $form['actions']['reset'] = [
+    '#type' => 'submit',
+    '#value' => t('Cancel'),
+    '#attributes' => [
+      'class' => ['btn btn-outline-focus m-btn m-btn--pill m-btn--custom t-login__btn--left'],
+    ],
+    '#weight' => -10,
+    '#submit' => ['_tinda_redirect_form_to_frontpage'],
+    '#limit_validation_errors' => [],
+  ];
+
+  $form['actions']['submit']['#attributes']['class'][] = 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air t-login__btn--right';
+}
+
+/**
+ * Redirect from form to front page.
+ *
+ * @param array $form
+ *   Form render array.
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ *   From state.
+ */
+function _tinda_redirect_form_to_frontpage($form, FormStateInterface $form_state) {
+    $form_state->setRedirect('<front>');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function tinda_form_user_pass_reset_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $form['#attributes']['class'][] = 'm-login__form';
+
+  $form['gdpr'] = [
+    '#type' => 'checkbox',
+    '#title' => t('One time login GDRP field title. <a href="/terms-of-service">Terms of Service</a>'),
+    '#required' => TRUE,
+    '#prefix' => '<div class="m-form__group form-group mt-4"><div class="custom-control custom-checkbox t-checkbox t-checkbox--state-brand mb-2">',
+    '#suffix' => '</div></div>',
+  ];
+
+  // Remove the this login can be used only once msg.
+  unset($form['help']);
+
+  $form['actions']['submit']['#prefix'] = '<div class="m-login__form-action">';
+  $form['actions']['submit']['#suffix'] = '</div>';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air';
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_page(&$variables) {
+  global $base_url;
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $anon_routes = [
+    'user.login',
+    'user.pass',
+    'user.reset.form',
+  ];
+  if (in_array($route_name, $anon_routes)) {
+
+    _tinda_preprocess_anonymous_page($variables, $route_name);
+
+  }
+  // Process all other pages.
+  // This does not mean that these pages are viewed by an authenticated user,
+  // as for example the node view page could be also be available for anon user.
+  else {
+
+    $url = $base_url . '/' . \Drupal::theme()->getActiveTheme()->getPath();
+    $background_image_url = $url . '/assets/app/media/img/bg/bg-body-overlay.jpg';
+    $variables['page']['background_image_url'] = $background_image_url;
+
+    if (\Drupal::service('path.matcher')->isFrontPage()) {
+
+      $variables['page']['description'] = [
+        '#type' => 'markup',
+        '#markup' => '<p class="lead m--font-light c-header-">' . t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.') . '</p>',
+      ];
+
+    }
+
+  }
+  // The user.reset.form route can be used both by auth and anon users.
+  if (\Drupal::currentUser()->isAuthenticated()) {
+
+    $logout_url = Url::fromRoute('user.logout');
+    $my_profile_url = Url::fromRoute('entity.user.edit_form', [
+      'user' => \Drupal::currentUser()->id(),
+    ]);
+
+    $variables['page']['account_info'] = [
+      'logout_url' => $logout_url,
+      'my_profile_url' => $my_profile_url,
+    ];
+
+  }
+}
+
+/**
+ * Preprocessor for anonymous pages.
+ *
+ * These pages are strictly for only anonymous users.
+ *
+ * @param $variables
+ * @param $route_name
+ */
+function _tinda_preprocess_anonymous_page(&$variables, $route_name) {
+  switch ($route_name) {
+    case 'user.reset.form':
+      $sub_title = t('One time log in access');
+      $sub_description = t('This login can be used only once.');
+      break;
+    case 'user.pass':
+      $sub_title = t('Forgot your password?');
+      $sub_description = t('Password reset instructions will be sent to your registered email address.');
+      break;
+    default:
+      $sub_title = t('Log in');
+      $sub_description = null;
+      break;
+  }
+
+  $system_conf = \Drupal::config('system.site');
+
+  $variables['page']['tinda_login'] = [
+    'contact_email' => $system_conf->get('mail'),
+    'site_name' => $system_conf->get('name'),
+    'sub_title' => $sub_title,
+    'sub_description' => $sub_description,
+  ];
+
+  $variables['#cache']['tags'][] = 'config:system.site';
+}
+
+/**
+ * Implements on hook_theme_suggestions_alter().
+ */
+function tinda_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+
+  if ($hook === 'html' || $hook ===  'page') {
+
+    // We are using a different layout for anonymous users.
+    $anon_user_pages = [
+      'html__user__login',
+      'html__user__password',
+      'html__user__reset',
+      'page__user__login',
+      'page__user__password',
+      'page__user__reset',
+    ];
+
+    foreach ($suggestions as $suggestion) {
+
+      if (in_array($suggestion, $anon_user_pages)) {
+        $suggestions[] = $hook . '__user__anon';
+      }
+
+    }
+
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_block(&$variables) {
+  // Can't be done with a template...
+  // Can't add classes to the system block wrapper element from twig :(.
+  if ($variables['base_plugin_id'] === 'system_branding_block') {
+    $variables['attributes']['class'][] = 'm-stack__item m-stack__item--middle m-brand__logo';
+  }
+  else if($variables['base_plugin_id'] === 'language_block') {
+    $current_lang_code = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables['current_lang'] = [
+      '#type' => 'markup',
+      '#markup' => strtoupper($current_lang_code),
+    ];
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_links__language_block(&$variables) {
+  $variables['attributes']['class'][] = 'c-language-list';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function tinda_theme_suggestions_form_element_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form_element__' . $variables['element']['#type'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_form_element(&$variables) {
+  $variables['label']['#input_type'] = $variables['type'];
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function tinda_theme_suggestions_form_element_label_alter(array &$suggestions, array $variables) {
+  $suggestions[] = 'form_element_label__' . $variables['element']['#input_type'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_container(&$variables) {
+  if (array_key_exists('data-drupal-views-infinite-scroll-content-wrapper', $variables['attributes'])) {
+    $variables['attributes']['class'][] = 'row';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_page__tests__test_round(&$variables) {
+  if (\Drupal::routeMatch()->getRouteName() === 'entity.qualification_test_round.canonical') {
+    $variables['page']['content']['tinda_content']['#prefix'] = '<div class="row">';
+    $variables['page']['content']['tinda_content']['#suffix'] = '</div>';
+    $variables['page']['content']['tinda_content']['#attributes']['class'][] = 'col-12 col-lg-7 col-xl-5';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_field__qualification_test_round__field_description(&$variables) {
+  $variables['attributes']['class'][] = 'test-info mb-4';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_field__qualification_test_round__field_end_time(&$variables) {
+  if (!empty($variables['items'])) {
+    $variables['items'][0]['content']['#prefix'] = '<p><i class="flaticon-calendar-1 mr-2"></i>';
+    $variables['items'][0]['content']['#markup'] = '<span class="m--font-bolder">' . t('Until') . ' ' . $variables['items'][0]['content']['#markup'] . '</span>';
+    $variables['items'][0]['content']['#suffix'] = '</p>';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_field__qualification_test_round__field_time_to_completion(&$variables) {
+  if (!empty($variables['items'])) {
+    $variables['items'][0]['content']['#prefix'] = '<p><i class="flaticon-clock-1 mr-2"></i><span class="m--font-bolder">';
+    $variables['items'][0]['content']['#suffix'] = '</span></p>';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_page_title(&$variables) {
+  if (_tinda_is_user_profile_page() || _tinda_is_user_profile_edit_page()) {
+
+    $variables['title']['#markup'] = t('User Settings');
+
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_html(&$variables) {
+  if (_tinda_is_user_profile_page() || _tinda_is_user_profile_edit_page()) {
+
+    $variables['head_title']['title'] = t('User Settings');
+
+  }
+}
+
+/**
+ * Helper function to determine if the user is visiting it's profile.
+ *
+ * @return bool
+ *   Indicates whether the user is requesting profile page.
+ */
+function _tinda_is_user_profile_page() {
+  return \Drupal::routeMatch()->getRouteName() === 'entity.user.canonical';
+}
+
+
+/**
+ * Helper function to determine if the user is visiting it's profile edit page.
+ *
+ * @return bool
+ *   Indicates whether the user is requesting profile edit page.
+ */
+function _tinda_is_user_profile_edit_page() {
+  return \Drupal::routeMatch()->getRouteName() === 'entity.user.edit_form';
+}
+
+/**
+ * Finds the username from page title and return the users email instead.
+ *
+ * @param $title
+ *   The caller must make sure that the title consists of user name.
+ *
+ * @return mixed
+ *   Email of the user whose username is in the title.
+ */
+function _tinda_get_user_email_from_page_title(&$title) {
+
+  if ($title instanceof \Drupal\Core\Render\Markup) {
+    $title = $title->__toString();
+  }
+
+  $user = user_load_by_name($title);
+  return $user->getEmail();
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function tinda_form_user_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $form['#attributes']['class'][] = 'm-form';
+
+  $form['account']['mail']['#weight'] = 2;
+  $form['account']['mail']['#description_display'] = 'before';
+  $form['account']['mail']['#attributes']['class'][] = 'form-text form-control form-control-md m-input';
+  $form['account']['current_pass']['#weight'] = 1;
+  $form['account']['current_pass']['#description_display'] = 'before';
+  $form['account']['current_pass']['#attributes']['class'][] = 'form-control form-control-md m-input';
+  $form['account']['pass']['#weight'] = 3;
+  $form['account']['pass']['#description_display'] = 'before';
+  $form['language']['#access'] = FALSE;
+  $form['timezone']['#access'] = FALSE;
+  // Hide all Field elements from this page.
+  foreach ($form as $key => &$element) {
+    if (strpos($key,'field_') !== FALSE) {
+      $element['#access'] = FALSE;
+    }
+  }
+  $form['actions']['#attributes']['class'][] = 'text-right mt-4 t-form-actions';
+  $form['actions']['submit']['#attributes']['class'][] = 'btn btn-focus m-btn--pill pl-5 pr-5';
+
+  $form['actions']['reset'] = [
+    '#type' => 'submit',
+    '#value' => t('Cancel'),
+    '#attributes' => [
+      'class' => ['btn btn-outline-focus m-btn--pill pl-5 pr-5 mr-4'],
+    ],
+    '#weight' => -10,
+    '#submit' => ['_tinda_redirect_form_to_frontpage'],
+    '#limit_validation_errors' => [],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function tinda_preprocess_input__password(&$variables) {
+  if (_tinda_is_user_profile_edit_page()
+    && strpos($variables['element']['#id'], 'edit-pass-') !== FALSE
+  ) {
+    $variables['attributes']['class'][] = 'form-control form-control-md m-input';
+  }
+}

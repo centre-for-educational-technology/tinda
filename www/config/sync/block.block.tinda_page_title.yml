@@ -1,0 +1,20 @@
+uuid: 2610ea09-8f98-4c90-9700-420e501a2e73
+langcode: en
+status: true
+dependencies:
+  theme:
+    - tinda
+_core:
+  default_config_hash: 7rR9chwXvdM2H8OYMAYx9Zj3GGlPMrZp_M3ZA4thYTk
+id: tinda_page_title
+theme: tinda
+region: page_info
+weight: -5
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

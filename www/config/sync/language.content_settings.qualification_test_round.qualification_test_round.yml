@@ -1,0 +1,17 @@
+uuid: 5e01c70e-c854-4b65-9d7a-0ab670ce7360
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_translation
+    - qualification_test_rounds
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: qualification_test_round.qualification_test_round
+target_entity_type_id: qualification_test_round
+target_bundle: qualification_test_round
+default_langcode: site_default
+language_alterable: true

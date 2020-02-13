@@ -1,0 +1,20 @@
+uuid: 9691ac2d-4242-4cca-9296-1a94a7f8847b
+langcode: en
+status: true
+dependencies:
+  config:
+    - questions.test_question_type.slider
+id: test_question.slider.user_id
+field_name: user_id
+entity_type: test_question
+bundle: slider
+label: 'Authored by'
+description: 'The user ID of author of the Test Question entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,92 @@
+uuid: 4433d203-f645-4179-8946-76a601c51336
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.submission.submission.field_filler
+    - field.field.submission.submission.field_finished_answering
+    - field.field.submission.submission.field_max_possible_score
+    - field.field.submission.submission.field_started_answering
+    - field.field.submission.submission.field_submission_answers
+    - field.field.submission.submission.field_test_round
+  module:
+    - datetime
+    - entity_reference_revisions
+    - paragraphs
+    - submissions
+id: submission.submission.default
+targetEntityType: submission
+bundle: submission
+mode: default
+content:
+  field_filler:
+    weight: 4
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_finished_answering:
+    weight: 6
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_max_possible_score:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_started_answering:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_submission_answers:
+    type: entity_reference_paragraphs
+    weight: 8
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_test_round:
+    weight: 7
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_autocomplete
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  user_id: true

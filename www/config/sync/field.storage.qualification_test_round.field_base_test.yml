@@ -1,0 +1,20 @@
+uuid: 3e1bfb61-5afe-4a2c-a42f-686f22a7b9c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - qualification_test_rounds
+    - qualification_tests
+id: qualification_test_round.field_base_test
+field_name: field_base_test
+entity_type: qualification_test_round
+type: entity_reference
+settings:
+  target_type: qualification_test
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

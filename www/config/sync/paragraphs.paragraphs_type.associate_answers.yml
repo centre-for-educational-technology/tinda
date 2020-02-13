@@ -1,0 +1,9 @@
+uuid: 42e33c0c-ff66-4e39-a162-befd39e912b1
+langcode: en
+status: true
+dependencies: {  }
+id: associate_answers
+label: 'Associate answers'
+icon_uuid: null
+description: 'Used to save the answers options for Associate Question type'
+behavior_plugins: {  }

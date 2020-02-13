@@ -1,0 +1,23 @@
+uuid: 09140440-d8e8-48e5-bd11-626c4c1fd9f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_end
+    - questions.test_question_type.slider
+id: test_question.slider.field_end
+field_name: field_end
+entity_type: test_question
+bundle: slider
+label: End
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

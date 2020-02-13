@@ -1,0 +1,20 @@
+uuid: b5d81196-825a-4a80-969c-848f28bff667
+langcode: en
+status: true
+dependencies:
+  module:
+    - questions
+id: test_question.field_slider_answer
+field_name: field_slider_answer
+entity_type: test_question
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

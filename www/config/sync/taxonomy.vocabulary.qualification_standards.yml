@@ -1,0 +1,9 @@
+uuid: bc04e5f7-4e9f-4e38-8050-b3186135ad91
+langcode: en
+status: true
+dependencies: {  }
+name: 'Qualification standards'
+vid: qualification_standards
+description: 'Qualification standards are used to categories Questions.'
+hierarchy: 0
+weight: 0

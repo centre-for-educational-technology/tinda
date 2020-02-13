@@ -1,0 +1,10 @@
+uuid: 3e042e61-3a76-4761-9f36-966874460034
+langcode: en
+status: true
+dependencies:
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.edit
+label: Edit
+targetEntityType: qualification_test_round
+cache: true

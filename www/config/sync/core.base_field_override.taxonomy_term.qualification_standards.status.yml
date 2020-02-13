@@ -1,0 +1,22 @@
+uuid: a562cf6b-069a-4754-b34a-276749ee40e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.qualification_standards
+id: taxonomy_term.qualification_standards.status
+field_name: status
+entity_type: taxonomy_term
+bundle: qualification_standards
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

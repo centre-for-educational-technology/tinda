@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Contains tests_menu_item.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function tests_menu_item_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the tests_menu_item module.
+    case 'help.page.tests_menu_item':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Creates the Admin Toolbar Tests menu item') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function tests_menu_item_toolbar_alter(&$items) {
+  $items['administration']['#attached']['library'][] = 'tests_menu_item/test_menu_item_styles';
+}

@@ -1,0 +1,19 @@
+uuid: 4c635b6a-678e-44ca-9ae1-46d55c11a732
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_help_text
+    - questions.test_question_type.slider
+id: test_question.slider.field_help_text
+field_name: field_help_text
+entity_type: test_question
+bundle: slider
+label: 'Help text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

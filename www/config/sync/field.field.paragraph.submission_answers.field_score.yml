@@ -1,0 +1,23 @@
+uuid: 0e673746-ef99-4cfb-8e16-65caccfb7643
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_score
+    - paragraphs.paragraphs_type.submission_answers
+id: paragraph.submission_answers.field_score
+field_name: field_score
+entity_type: paragraph
+bundle: submission_answers
+label: 'Maximum Score'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

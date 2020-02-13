@@ -1,0 +1,20 @@
+label: Arkisto
+display:
+  default:
+    display_title: Isäntä
+    display_options:
+      title: Arkisto
+      exposed_form:
+        options:
+          submit_button: Käytä
+          reset_button_label: Palauta
+          exposed_sorts_label: Lajittele
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Merkintöjä sivua kohti'
+            items_per_page_options_all_label: '- Kaikki -'
+  block_1:
+    display_title: Lohko
+  page_1:
+    display_title: Sivu

@@ -1,0 +1,30 @@
+uuid: 37aef26f-79ed-420a-9eff-b08f860cf95b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test.field_qualification_standard
+    - taxonomy.vocabulary.qualification_standards
+  module:
+    - qualification_tests
+id: qualification_test.qualification_test.field_qualification_standard
+field_name: field_qualification_standard
+entity_type: qualification_test
+bundle: qualification_test
+label: 'Qualification standard'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      qualification_standards: qualification_standards
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

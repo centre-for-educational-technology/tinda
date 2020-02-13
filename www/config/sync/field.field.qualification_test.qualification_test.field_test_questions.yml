@@ -1,0 +1,40 @@
+uuid: f165bd81-9f3c-4b5e-b00a-a7f6e0695af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test.field_test_questions
+    - paragraphs.paragraphs_type.question_sections
+  module:
+    - entity_reference_revisions
+    - qualification_tests
+id: qualification_test.qualification_test.field_test_questions
+field_name: field_test_questions
+entity_type: qualification_test
+bundle: qualification_test
+label: 'Test Questions'
+description: 'Please select Qualification standard first. NB! changing Qualification standard removes all current question sections.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      question_sections: question_sections
+    target_bundles_drag_drop:
+      question_sections:
+        enabled: true
+        weight: 5
+      associate_answers:
+        weight: 6
+        enabled: false
+      checkbox_selections:
+        weight: 7
+        enabled: false
+      order_answers:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

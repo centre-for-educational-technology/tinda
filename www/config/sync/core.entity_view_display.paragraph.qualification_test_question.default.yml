@@ -1,0 +1,32 @@
+uuid: b95f3a60-3ab6-4e34-a5de-2f5c801559f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.qualification_test_question.field_required
+    - field.field.paragraph.qualification_test_question.field_test_questions
+    - paragraphs.paragraphs_type.qualification_test_question
+id: paragraph.qualification_test_question.default
+targetEntityType: paragraph
+bundle: qualification_test_question
+mode: default
+content:
+  field_required:
+    weight: 1
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_test_questions:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

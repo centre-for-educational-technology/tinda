@@ -1,0 +1,21 @@
+uuid: 1b1b0f27-4225-424d-8a76-b84eeae38cc0
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - questions
+id: test_question.field_associate_answers
+field_name: field_associate_answers
+entity_type: test_question
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,69 @@
+uuid: 245a9e60-2237-4754-8dfb-b3bf4574d75e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.qualification_test.qualification_test.field_description
+    - field.field.qualification_test.qualification_test.field_qualification_standard
+    - field.field.qualification_test.qualification_test.field_test_questions
+    - field.field.qualification_test.qualification_test.field_time_to_completion
+  module:
+    - entity_reference_revisions
+    - qualification_tests
+    - text
+    - user
+id: qualification_test.qualification_test.default
+targetEntityType: qualification_test
+bundle: qualification_test
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_qualification_standard:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_test_questions:
+    type: entity_reference_revisions_entity_view
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_time_to_completion:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

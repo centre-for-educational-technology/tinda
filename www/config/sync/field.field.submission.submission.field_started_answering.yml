@@ -1,0 +1,21 @@
+uuid: c2a393ad-781e-4fa1-94b2-98b94ac4d793
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.submission.field_started_answering
+  module:
+    - datetime
+    - submissions
+id: submission.submission.field_started_answering
+field_name: field_started_answering
+entity_type: submission
+bundle: submission
+label: 'Started answering'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+{% set random_id = random(300) %}
+<div class="row align-items-center mb-4">
+    <div class="col-auto">
+        <input name="{{ attributes.name }}" min="{{ attributes.min }}" max="{{ attributes.max }}" step="{{ attributes.step }}" {% if attributes.required %}required{% endif %} value="{{ attributes.value }}" type="text" class="{{ attributes.class }} form-control form-control__nouislider nouislider_input" id="m_input_nouislider_{{ random_id }}" placeholder="{{ 'Quantity' | t }}">
+    </div>
+    <div class="col">
+        <div id="m_nouislider_{{ random_id }}" class="m-nouislider--drag-danger nouislider_item"></div>
+    </div>
+</div>

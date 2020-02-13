@@ -1,0 +1,20 @@
+uuid: 8f00f769-60e7-43c0-95a7-6cbcb74db4f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - questions.test_question_type.associate
+id: test_question.associate.user_id
+field_name: user_id
+entity_type: test_question
+bundle: associate
+label: 'Authored by'
+description: 'The user ID of author of the Test Question entity.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

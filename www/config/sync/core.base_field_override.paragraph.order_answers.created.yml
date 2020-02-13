@@ -1,0 +1,18 @@
+uuid: 5ce129ea-07b6-410c-9ca1-cc6af378ed32
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.order_answers
+id: paragraph.order_answers.created
+field_name: created
+entity_type: paragraph
+bundle: order_answers
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

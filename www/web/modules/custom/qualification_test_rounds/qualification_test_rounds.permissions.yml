@@ -1,0 +1,30 @@
+add qualification test round entities:
+  title: 'Create new Qualification Test Round entities'
+
+administer qualification test round entities:
+  title: 'Administer Qualification Test Round entities'
+  description: 'Allow to access the administration form to configure Qualification Test Round entities.'
+  restrict access: true
+
+delete qualification test round entities:
+  title: 'Delete Qualification Test Round entities'
+
+edit qualification test round entities:
+  title: 'Edit Qualification Test Round entities'
+
+view published qualification test round entities:
+  title: 'View published Qualification Test Round entities'
+
+view unpublished qualification test round entities:
+  title: 'View unpublished Qualification Test Round entities'
+
+view all qualification test round revisions:
+  title: 'View all Qualification Test Round revisions'
+
+revert all qualification test round revisions:
+  title: 'Revert all Qualification Test Round revisions'
+  description: 'Role requires permission <em>view Qualification Test Round revisions</em> and <em>edit rights</em> for qualification test round entities in question or <em>administer qualification test round entities</em>.'
+
+delete all qualification test round revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Qualification Test Round revisions</em> and <em>delete rights</em> for qualification test round entities in question or <em>administer qualification test round entities</em>.'

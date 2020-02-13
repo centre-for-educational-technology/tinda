@@ -1,0 +1,21 @@
+uuid: 5e775dfb-302e-4529-9dd4-95f27e96b4ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_file_format
+    - questions.test_question_type.upload
+  module:
+    - options
+id: test_question.upload.field_file_format
+field_name: field_file_format
+entity_type: test_question
+bundle: upload
+label: 'File format'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

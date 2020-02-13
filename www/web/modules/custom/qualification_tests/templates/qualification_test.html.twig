@@ -1,0 +1,22 @@
+{#
+/**
+ * @file qualification_test.html.twig
+ * Default theme implementation to present Qualification Test data.
+ *
+ * This template is used when viewing Qualification Test pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_qualification_test()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('qualification_test') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

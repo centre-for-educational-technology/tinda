@@ -1,0 +1,76 @@
+uuid: a51875b4-0e87-49a2-81dc-75d90871b887
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.qualification_test.qualification_test.field_description
+    - field.field.qualification_test.qualification_test.field_qualification_standard
+    - field.field.qualification_test.qualification_test.field_test_questions
+    - field.field.qualification_test.qualification_test.field_time_to_completion
+  module:
+    - paragraphs
+    - qualification_tests
+    - text
+id: qualification_test.qualification_test.default
+targetEntityType: qualification_test
+bundle: qualification_test
+mode: default
+content:
+  field_description:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_qualification_standard:
+    weight: 3
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_test_questions:
+    type: entity_reference_paragraphs
+    weight: 5
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: question_sections
+    third_party_settings: {  }
+    region: content
+  field_time_to_completion:
+    weight: 4
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  user_id: true

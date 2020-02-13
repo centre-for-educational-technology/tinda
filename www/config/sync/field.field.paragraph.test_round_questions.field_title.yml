@@ -1,0 +1,19 @@
+uuid: 750065d1-6f99-4ec0-83f8-152889f21021
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.test_round_questions
+id: paragraph.test_round_questions.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: test_round_questions
+label: Title
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

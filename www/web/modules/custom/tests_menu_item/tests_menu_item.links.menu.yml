@@ -1,0 +1,6 @@
+tests_menu_item.admin_tests:
+  route_name: tests_menu_item.admin_tests
+  parent: system.admin
+  description: 'Administer Tests.'
+  title: Tests
+  weight: -9

@@ -1,0 +1,44 @@
+uuid: fe9a298a-b8a9-4de6-981e-708d43e901dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.question_sections.field_questions
+    - field.field.paragraph.question_sections.field_randomise_questions
+    - field.field.paragraph.question_sections.field_title
+    - paragraphs.paragraphs_type.question_sections
+  module:
+    - entity_reference_revisions
+id: paragraph.question_sections.default
+targetEntityType: paragraph
+bundle: question_sections
+mode: default
+content:
+  field_questions:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_randomise_questions:
+    weight: 1
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_title:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

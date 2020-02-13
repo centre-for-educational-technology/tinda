@@ -1,0 +1,21 @@
+uuid: 57e38a7d-8d72-4ea0-bec8-95655b0548ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test_round.field_start_time
+  module:
+    - datetime
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.field_start_time
+field_name: field_start_time
+entity_type: qualification_test_round
+bundle: qualification_test_round
+label: 'Start time'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

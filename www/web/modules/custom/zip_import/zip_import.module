@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains zip_import.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function zip_import_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the zip_import module.
+    case 'help.page.zip_import':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('import Tinda questions from zip file') . '</p>';
+      return $output;
+
+    default:
+  }
+}

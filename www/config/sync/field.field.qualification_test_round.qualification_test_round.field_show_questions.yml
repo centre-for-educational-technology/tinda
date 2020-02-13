@@ -1,0 +1,24 @@
+uuid: 152f2f43-b191-4fed-a975-81b4ddb0dc16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test_round.field_show_questions
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.field_show_questions
+field_name: field_show_questions
+entity_type: qualification_test_round
+bundle: qualification_test_round
+label: 'Show questions'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'By question'
+  off_label: 'By section'
+field_type: boolean

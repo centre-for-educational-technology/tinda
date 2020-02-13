@@ -1,0 +1,9 @@
+name: 'Questions'
+type: module
+description: 'Tinda question entities'
+core: 8.x
+package: 'Custom'
+
+dependencies:
+  - tests_menu_item
+  - taxonomy

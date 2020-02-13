@@ -1,0 +1,20 @@
+uuid: bfef2ec2-36f5-49b9-8b68-6a2a664140c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - questions
+id: test_question.field_end
+field_name: field_end
+entity_type: test_question
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,8 @@
+name: 'Submissions'
+type: module
+description: 'Qualification Test Round Submissions'
+core: 8.x
+package: 'Custom'
+
+dependencies:
+  - questions

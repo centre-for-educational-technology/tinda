@@ -1,0 +1,63 @@
+uuid: 16f0220f-2786-4cca-8104-94bfcd823325
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.qualification_test_round.qualification_test_round.field_base_test
+    - field.field.qualification_test_round.qualification_test_round.field_description
+    - field.field.qualification_test_round.qualification_test_round.field_end_time
+    - field.field.qualification_test_round.qualification_test_round.field_move_between_questions
+    - field.field.qualification_test_round.qualification_test_round.field_show_questions
+    - field.field.qualification_test_round.qualification_test_round.field_start_time
+    - field.field.qualification_test_round.qualification_test_round.field_test_round_questions
+    - field.field.qualification_test_round.qualification_test_round.field_time_to_completion
+  module:
+    - datetime
+    - qualification_test_rounds
+    - text
+id: qualification_test_round.qualification_test_round.default
+targetEntityType: qualification_test_round
+bundle: qualification_test_round
+mode: default
+content:
+  field_description:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_end_time:
+    weight: 2
+    label: hidden
+    settings:
+      timezone_override: UTC
+      date_format: 'd.m.Y H:i T'
+    third_party_settings: {  }
+    type: datetime_custom
+    region: content
+  field_time_to_completion:
+    weight: 3
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  name:
+    label: hidden
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_base_test: true
+  field_move_between_questions: true
+  field_show_questions: true
+  field_start_time: true
+  field_test_round_questions: true
+  langcode: true
+  user_id: true

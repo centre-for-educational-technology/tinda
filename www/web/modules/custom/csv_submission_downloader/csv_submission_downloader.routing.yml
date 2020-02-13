@@ -1,0 +1,7 @@
+csv_submission_downloader.content:
+  path: '/submissions/download'
+  defaults:
+    _controller: '\Drupal\csv_submission_downloader\Controller\SubmissionsDownloader::content'
+    _title: 'Submission Downloader'
+  requirements:
+    _permission: 'access administration pages'

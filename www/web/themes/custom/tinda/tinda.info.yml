@@ -1,0 +1,16 @@
+name: Tinda
+type: theme
+description: 'Tinda Custom Theme'
+package: Custom
+core: 8.x
+libraries:
+  - tinda/global-styling
+ 
+base theme: stable
+
+regions:
+  brand: Brand
+  topbar_list: Topbar List Items
+  page_info: Page Info
+  content: Content
+  anon_content: Anonymous Content

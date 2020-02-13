@@ -1,0 +1,22 @@
+# Qualification Test routing definition
+qualification_test.settings_tab:
+  route_name: qualification_test.settings
+  title: 'Settings'
+  base_route: qualification_test.settings
+
+entity.qualification_test.canonical:
+  route_name: entity.qualification_test.canonical
+  base_route: entity.qualification_test.canonical
+  title: 'View'
+
+entity.qualification_test.edit_form:
+  route_name: entity.qualification_test.edit_form
+  base_route: entity.qualification_test.canonical
+  title: 'Edit'
+
+entity.qualification_test.delete_form:
+  route_name:  entity.qualification_test.delete_form
+  base_route:  entity.qualification_test.canonical
+  title: Delete
+  weight: 10
+

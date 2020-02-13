@@ -1,0 +1,23 @@
+uuid: fabae594-59c2-4a36-8b64-8acc8be3c1b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_score
+    - paragraphs.paragraphs_type.test_question
+id: paragraph.test_question.field_score
+field_name: field_score
+entity_type: paragraph
+bundle: test_question
+label: Score
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

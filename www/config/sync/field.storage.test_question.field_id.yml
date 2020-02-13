@@ -1,0 +1,21 @@
+uuid: 393244d5-467f-48f5-9998-4209ccb166c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - questions
+id: test_question.field_id
+field_name: field_id
+entity_type: test_question
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

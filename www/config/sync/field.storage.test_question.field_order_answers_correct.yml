@@ -1,0 +1,21 @@
+uuid: e4e487db-fc82-41c2-ad0c-99fe1416d531
+langcode: en
+status: true
+dependencies:
+  module:
+    - questions
+id: test_question.field_order_answers_correct
+field_name: field_order_answers_correct
+entity_type: test_question
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

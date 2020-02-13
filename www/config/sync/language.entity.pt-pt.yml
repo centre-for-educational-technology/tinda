@@ -1,0 +1,9 @@
+uuid: ee534079-29d6-4d6c-a5ab-d249f0c36fa4
+langcode: en
+status: true
+dependencies: {  }
+id: pt-pt
+label: 'Portuguese, Portugal'
+direction: ltr
+weight: 7
+locked: false

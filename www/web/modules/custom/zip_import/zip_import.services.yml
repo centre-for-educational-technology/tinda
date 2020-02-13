@@ -1,0 +1,4 @@
+services:
+  zip_importer:
+    class: Drupal\zip_import\ZipImporter
+    arguments: []

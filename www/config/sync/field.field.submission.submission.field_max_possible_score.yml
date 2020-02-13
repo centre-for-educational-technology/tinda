@@ -1,0 +1,24 @@
+uuid: be69162a-a494-40b7-aa38-a40101040de5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.submission.field_max_possible_score
+  module:
+    - submissions
+id: submission.submission.field_max_possible_score
+field_name: field_max_possible_score
+entity_type: submission
+bundle: submission
+label: 'Max Possible Score'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

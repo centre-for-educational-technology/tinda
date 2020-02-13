@@ -1,0 +1,27 @@
+uuid: cb6f3f03-91df-480f-a1a5-13d67c6532b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.submission.field_test_round
+  module:
+    - entity_reference_revisions
+    - submissions
+id: submission.submission.field_test_round
+field_name: field_test_round
+entity_type: submission
+bundle: submission
+label: 'Test round'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:qualification_test_round'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference_revisions

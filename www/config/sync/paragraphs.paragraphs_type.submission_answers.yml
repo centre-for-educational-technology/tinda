@@ -1,0 +1,9 @@
+uuid: 9fef401b-862d-42f7-b33e-e49cf9bb8060
+langcode: en
+status: true
+dependencies: {  }
+id: submission_answers
+label: 'Submission answers'
+icon_uuid: null
+description: 'Used to save user answers to the Qualification Test Round''s Questions'
+behavior_plugins: {  }

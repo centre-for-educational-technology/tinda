@@ -1,0 +1,10 @@
+entity.test_question.add_form:
+  route_name: entity.test_question.add_page
+  title: 'Add Test Question'
+  appears_on:
+    - entity.test_question.collection
+entity.test_question_type.add_form:
+  route_name: entity.test_question_type.add_form
+  title: 'Add Test Question type'
+  appears_on:
+    - entity.test_question_type.collection

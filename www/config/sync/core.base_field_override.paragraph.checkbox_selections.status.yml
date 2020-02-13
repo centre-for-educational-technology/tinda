@@ -1,0 +1,22 @@
+uuid: 6a76fe86-0527-4cbb-b7d5-c093b5a0fffd
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.checkbox_selections
+id: paragraph.checkbox_selections.status
+field_name: status
+entity_type: paragraph
+bundle: checkbox_selections
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

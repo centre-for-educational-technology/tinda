@@ -1,0 +1,24 @@
+uuid: c80f6fdf-306b-42c7-b77a-3bc0794010e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.associate_answers.field_associate_options
+    - paragraphs.paragraphs_type.associate_answers
+id: paragraph.associate_answers.default
+targetEntityType: paragraph
+bundle: associate_answers
+mode: default
+content:
+  field_associate_options:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

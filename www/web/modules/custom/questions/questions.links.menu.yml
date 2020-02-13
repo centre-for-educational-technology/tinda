@@ -1,0 +1,17 @@
+
+# Test Question menu items definition
+entity.test_question.collection:
+  title: 'Questions'
+  route_name: entity.test_question.collection
+  description: 'List of Test Questions'
+  parent: tests_menu_item.admin_tests
+  weight: 100
+
+
+# Test Question type menu items definition
+entity.test_question_type.collection:
+  title: 'Question Types'
+  route_name: entity.test_question_type.collection
+  description: 'List of Test Question types'
+  parent: tests_menu_item.admin_tests
+  weight: 99

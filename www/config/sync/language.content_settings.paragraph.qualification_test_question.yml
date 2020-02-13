@@ -1,0 +1,18 @@
+uuid: 8c6809d1-5be5-4de7-a516-bf704c8e823c
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.qualification_test_question
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.qualification_test_question
+target_entity_type_id: paragraph
+target_bundle: qualification_test_question
+default_langcode: site_default
+language_alterable: false

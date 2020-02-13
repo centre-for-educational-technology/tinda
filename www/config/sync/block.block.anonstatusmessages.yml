@@ -1,0 +1,20 @@
+uuid: 477b6bfa-e253-4408-a2ba-68cbe05b3d1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - anonymous_status_messages
+  theme:
+    - tinda
+id: anonstatusmessages
+theme: tinda
+region: anon_content
+weight: -4
+provider: null
+plugin: anon_system_messages_block
+settings:
+  id: anon_system_messages_block
+  label: 'Anon Status Messages'
+  provider: anonymous_status_messages
+  label_display: '0'
+visibility: {  }

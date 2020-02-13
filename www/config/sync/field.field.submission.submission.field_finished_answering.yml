@@ -1,0 +1,21 @@
+uuid: 6dce2c2f-9d6f-4d28-9e06-7963473324c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.submission.field_finished_answering
+  module:
+    - datetime
+    - submissions
+id: submission.submission.field_finished_answering
+field_name: field_finished_answering
+entity_type: submission
+bundle: submission
+label: 'Finished answering'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,61 @@
+uuid: 497d2e5e-db05-448d-a543-4be1efd484f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_first_name
+    - field.field.user.user.field_institution
+    - field.field.user.user.field_last_name
+    - field.field.user.user.user_picture
+  module:
+    - user
+_core:
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  account:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_first_name:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_institution:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_last_name:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  language:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  timezone:
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  contact: true
+  langcode: true
+  user_picture: true

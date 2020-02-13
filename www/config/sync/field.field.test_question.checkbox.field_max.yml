@@ -1,0 +1,23 @@
+uuid: 5f7c89c9-9e94-4474-94fc-9c42f3ca7225
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_max
+    - questions.test_question_type.checkbox
+id: test_question.checkbox.field_max
+field_name: field_max
+entity_type: test_question
+bundle: checkbox
+label: 'Max options'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

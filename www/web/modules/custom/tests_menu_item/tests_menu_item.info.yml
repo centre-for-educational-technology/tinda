@@ -1,0 +1,5 @@
+name: 'Tests Menu Item'
+type: module
+description: 'Creates the Admin Toolbar Tests menu item'
+core: 8.x
+package: 'Custom'

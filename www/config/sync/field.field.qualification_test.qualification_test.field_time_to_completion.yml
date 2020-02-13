@@ -1,0 +1,24 @@
+uuid: 95a633df-54de-4ee4-a767-7fb97cedd789
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test.field_time_to_completion
+  module:
+    - qualification_tests
+id: qualification_test.qualification_test.field_time_to_completion
+field_name: field_time_to_completion
+entity_type: qualification_test
+bundle: qualification_test
+label: 'Time to completion'
+description: 'Approximate time in minutes, how much time it takes for an applicant to complete this test.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: '~'
+  suffix: min
+field_type: integer

@@ -1,0 +1,19 @@
+uuid: 4db5a041-1aa1-4fe4-b526-f790dd26febd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_order_answers_correct
+    - questions.test_question_type.order
+id: test_question.order.field_order_answers_correct
+field_name: field_order_answers_correct
+entity_type: test_question
+bundle: order
+label: 'Correct answers'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

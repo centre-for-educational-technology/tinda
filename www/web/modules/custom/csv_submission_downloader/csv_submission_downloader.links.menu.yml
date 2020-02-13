@@ -1,0 +1,6 @@
+csv_submission_downloader.admin:
+  title: 'Download as CSV'
+  description: 'Download a csv file containing all submission data'
+  parent: views_view:views.submissions.submission_collection
+  route_name: csv_submission_downloader.content
+  weight: 120

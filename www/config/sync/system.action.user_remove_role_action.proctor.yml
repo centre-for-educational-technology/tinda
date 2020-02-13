@@ -1,0 +1,14 @@
+uuid: 6939b891-eacb-4ae9-b06d-907c204a68e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.proctor
+  module:
+    - user
+id: user_remove_role_action.proctor
+label: 'Remove the Proctor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: proctor

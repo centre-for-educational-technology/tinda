@@ -1,0 +1,20 @@
+uuid: c72bc71b-d209-421c-9f9a-00d5e25725b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - qualification_test_rounds
+id: qualification_test_round.field_end_time
+field_name: field_end_time
+entity_type: qualification_test_round
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

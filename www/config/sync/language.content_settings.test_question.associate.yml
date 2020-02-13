@@ -1,0 +1,18 @@
+uuid: 3c208a54-3b44-4cc6-a74c-85d35cf0964f
+langcode: en
+status: true
+dependencies:
+  config:
+    - questions.test_question_type.associate
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: test_question.associate
+target_entity_type_id: test_question
+target_bundle: associate
+default_langcode: site_default
+language_alterable: true

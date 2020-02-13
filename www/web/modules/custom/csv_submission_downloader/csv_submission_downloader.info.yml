@@ -1,0 +1,8 @@
+name: CSV Submissions Downlaoder
+description: "Add a button to download all submission data in csv format"
+package: 'Custom'
+type: module
+version: 1.0
+core: 8.x
+dependencies:
+  -qualification_test_round

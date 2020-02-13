@@ -1,0 +1,15 @@
+global-styling:
+  css:
+    theme:
+      assets/vendors/base/vendors.bundle.css: {}
+      assets/demo/demo8/base/style.bundle.css: {}
+  js:
+    assets/vendors/base/vendors.bundle.js: {}
+    assets/demo/demo8/base/scripts.bundle.js: {}
+    assets/vendors/custom/jquery-ui/jquery-ui.bundle.js: {}
+  dependencies:
+    - core/jquery
+
+test_page:
+  js:
+    assets/app/js/testpage.js: {}

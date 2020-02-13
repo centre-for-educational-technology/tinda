@@ -1,0 +1,5 @@
+tinda_users.admin.people.csv_import:
+  title: 'CSV Import'
+  description: 'Import users from a CSV'
+  route_name: csv_importer.form
+  parent: entity.user.collection

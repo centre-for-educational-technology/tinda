@@ -1,0 +1,23 @@
+uuid: ba19c47a-f398-45eb-9940-3b7fbedbe21e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_steps
+    - questions.test_question_type.slider
+id: test_question.slider.field_steps
+field_name: field_steps
+entity_type: test_question
+bundle: slider
+label: Steps
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

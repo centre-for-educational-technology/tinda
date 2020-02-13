@@ -1,0 +1,8 @@
+qualification_test_rounds.remove_uploaded_file_from_dropzone:
+  path: '/dropzonejs/remove'
+  methods: [POST]
+  defaults:
+    _controller: '\Drupal\qualification_test_rounds\Controller\DropzoneRemoveFileController::handleRemovingUploadedFile'
+  requirements:
+    _permission: 'dropzone upload files'
+    _csrf_token: 'TRUE'

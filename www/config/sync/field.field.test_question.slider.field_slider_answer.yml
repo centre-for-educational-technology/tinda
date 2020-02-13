@@ -1,0 +1,23 @@
+uuid: 912778bb-e79b-4125-b797-468915aa09ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_slider_answer
+    - questions.test_question_type.slider
+id: test_question.slider.field_slider_answer
+field_name: field_slider_answer
+entity_type: test_question
+bundle: slider
+label: Answer
+description: 'Correct answer for the question.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

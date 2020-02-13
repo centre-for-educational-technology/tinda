@@ -1,0 +1,8 @@
+dropzone_default_values:
+  js:
+    js/dropzone_default_values.js: {}
+  dependencies:
+    - core/jquery.once
+    - core/drupal
+    - core/drupalSettings
+    - dropzonejs/dropzonejs

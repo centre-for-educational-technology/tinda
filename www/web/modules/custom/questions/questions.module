@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Contains questions.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function questions_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the questions module.
+    case 'help.page.questions':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Tinda question entities') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function questions_theme() {
+  $theme = [];
+  $theme['test_question'] = [
+    'render element' => 'elements',
+    'file' => 'test_question.page.inc',
+    'template' => 'test_question',
+  ];
+  $theme['test_question_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'test_question.page.inc',
+  ];
+
+  $theme['form_element_order'] = [
+    'template' => 'element--order',
+    'variables' => array(
+      'title' => NULL,
+      'help_text' => NULL,
+      'name' => NULL,
+      'options' => [],
+      'attributes' => [],
+      'default_value' => [],
+    ),
+  ];
+  return $theme;
+}
+
+/**
+* Implements hook_theme_suggestions_HOOK().
+*/
+function questions_theme_suggestions_test_question(array $variables) {
+  $suggestions = [];
+  $entity = $variables['elements']['#test_question'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'test_question__' . $sanitized_view_mode;
+  $suggestions[] = 'test_question__' . $entity->bundle();
+  $suggestions[] = 'test_question__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'test_question__' . $entity->id();
+  $suggestions[] = 'test_question__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}

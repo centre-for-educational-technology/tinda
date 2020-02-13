@@ -1,0 +1,46 @@
+uuid: 3611ba4b-622e-4aa0-ab9c-a193f3796b48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_questions
+    - paragraphs.paragraphs_type.test_question
+    - paragraphs.paragraphs_type.test_round_questions
+  module:
+    - entity_reference_revisions
+id: paragraph.test_round_questions.field_section_questions
+field_name: field_section_questions
+entity_type: paragraph
+bundle: test_round_questions
+label: 'Section questions'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      test_question: test_question
+    target_bundles_drag_drop:
+      test_question:
+        enabled: true
+        weight: 7
+      associate_answers:
+        weight: 8
+        enabled: false
+      checkbox_selections:
+        weight: 9
+        enabled: false
+      order_answers:
+        weight: 10
+        enabled: false
+      question_sections:
+        weight: 11
+        enabled: false
+      test_round_questions:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions

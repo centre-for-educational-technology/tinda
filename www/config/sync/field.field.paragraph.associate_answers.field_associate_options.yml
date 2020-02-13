@@ -1,0 +1,19 @@
+uuid: 7e71b42d-3fa6-464f-9970-3ed45011a90b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_associate_options
+    - paragraphs.paragraphs_type.associate_answers
+id: paragraph.associate_answers.field_associate_options
+field_name: field_associate_options
+entity_type: paragraph
+bundle: associate_answers
+label: Options
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,19 @@
+uuid: 58800f9f-0c1b-4dac-9e84-4c762c34ac9a
+langcode: en
+status: true
+dependencies:
+  module:
+    - qualification_tests
+    - text
+id: qualification_test.field_description
+field_name: field_description
+entity_type: qualification_test
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

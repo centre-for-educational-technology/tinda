@@ -1,0 +1,21 @@
+uuid: b3e71b17-7936-48b4-84ff-62ec485b24fa
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - questions
+id: test_question.field_checkbox_answers
+field_name: field_checkbox_answers
+entity_type: test_question
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

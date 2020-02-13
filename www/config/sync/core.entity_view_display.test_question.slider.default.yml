@@ -1,0 +1,97 @@
+uuid: 6cfba4a4-a8c1-4efe-b37e-4f13a1606872
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.test_question.slider.field_end
+    - field.field.test_question.slider.field_help_text
+    - field.field.test_question.slider.field_id
+    - field.field.test_question.slider.field_qualification_standard
+    - field.field.test_question.slider.field_slider_answer
+    - field.field.test_question.slider.field_start
+    - field.field.test_question.slider.field_steps
+    - questions.test_question_type.slider
+  module:
+    - user
+id: test_question.slider.default
+targetEntityType: test_question
+bundle: slider
+mode: default
+content:
+  field_end:
+    weight: 2
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_help_text:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_id:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_qualification_standard:
+    weight: 6
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_slider_answer:
+    weight: 5
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_start:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_steps:
+    weight: 3
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  name:
+    label: above
+    type: string
+    weight: -4
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  user_id:
+    label: hidden
+    type: author
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

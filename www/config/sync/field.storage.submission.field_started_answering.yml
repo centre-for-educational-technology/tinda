@@ -1,0 +1,20 @@
+uuid: dcdbc3c3-1fa0-46d6-a826-12e3743c165d
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - submissions
+id: submission.field_started_answering
+field_name: field_started_answering
+entity_type: submission
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

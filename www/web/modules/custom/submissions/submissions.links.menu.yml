@@ -1,0 +1,6 @@
+submission.admin.tests.settings:
+  title: 'Submission settings'
+  description: 'Configure Submission entities'
+  route_name: submission.settings
+  parent: views_view:views.submissions.submission_collection
+  weight: 150

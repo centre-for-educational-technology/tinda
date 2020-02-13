@@ -1,0 +1,25 @@
+uuid: 96b9185d-2f87-4300-8106-82eff58fdab0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_test_questions
+    - paragraphs.paragraphs_type.qualification_test_question
+id: paragraph.qualification_test_question.field_test_questions
+field_name: field_test_questions
+entity_type: paragraph
+bundle: qualification_test_question
+label: Questions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: qualification_tests
+  handler_settings:
+    view:
+      view_name: test_questions
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

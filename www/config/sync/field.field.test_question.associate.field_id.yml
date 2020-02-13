@@ -1,0 +1,19 @@
+uuid: 37a827b1-d9a0-4540-a233-231f0b086343
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_id
+    - questions.test_question_type.associate
+id: test_question.associate.field_id
+field_name: field_id
+entity_type: test_question
+bundle: associate
+label: ID
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

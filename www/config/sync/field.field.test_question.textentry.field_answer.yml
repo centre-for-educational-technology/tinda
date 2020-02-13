@@ -1,0 +1,19 @@
+uuid: d459aaa3-9a4c-46ea-8592-17c846fdd3a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.test_question.field_answer
+    - questions.test_question_type.textentry
+id: test_question.textentry.field_answer
+field_name: field_answer
+entity_type: test_question
+bundle: textentry
+label: Answer
+description: 'Correct answer for the question.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

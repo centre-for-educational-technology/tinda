@@ -1,0 +1,6 @@
+uuid: 2d4c9c9c-b558-492e-b911-74ff1cf3bc10
+langcode: en
+status: true
+dependencies: {  }
+id: textentry
+label: 'Text Entry '

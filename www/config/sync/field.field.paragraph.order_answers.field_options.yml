@@ -1,0 +1,19 @@
+uuid: 87b347fa-03fa-4ab0-92f0-c8ac62a73642
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_options
+    - paragraphs.paragraphs_type.order_answers
+id: paragraph.order_answers.field_options
+field_name: field_options
+entity_type: paragraph
+bundle: order_answers
+label: Options
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

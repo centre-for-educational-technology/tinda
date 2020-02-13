@@ -1,0 +1,77 @@
+uuid: 60a3be89-0aec-4b77-a701-7ea964356490
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.submission.submission.field_filler
+    - field.field.submission.submission.field_finished_answering
+    - field.field.submission.submission.field_max_possible_score
+    - field.field.submission.submission.field_started_answering
+    - field.field.submission.submission.field_submission_answers
+    - field.field.submission.submission.field_test_round
+  module:
+    - datetime
+    - entity_reference_revisions
+    - submissions
+id: submission.submission.default
+targetEntityType: submission
+bundle: submission
+mode: default
+content:
+  field_finished_answering:
+    weight: 2
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_max_possible_score:
+    weight: 4
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_started_answering:
+    weight: 1
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_submission_answers:
+    type: entity_reference_revisions_entity_view
+    weight: 5
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_test_round:
+    weight: 3
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  name:
+    label: above
+    type: string
+    weight: 0
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  field_filler: true
+  langcode: true
+  user_id: true

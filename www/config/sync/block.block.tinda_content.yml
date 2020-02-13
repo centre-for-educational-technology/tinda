@@ -1,0 +1,22 @@
+uuid: 435d12e0-c5cd-4ae2-ad19-7b110f822dd0
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - tinda
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: tinda_content
+theme: tinda
+region: content
+weight: -1
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

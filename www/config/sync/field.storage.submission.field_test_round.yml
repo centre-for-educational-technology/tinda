@@ -1,0 +1,21 @@
+uuid: 750abd9f-71c5-4130-b1bd-2d61d0938fb1
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - qualification_test_rounds
+    - submissions
+id: submission.field_test_round
+field_name: field_test_round
+entity_type: submission
+type: entity_reference_revisions
+settings:
+  target_type: qualification_test_round
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

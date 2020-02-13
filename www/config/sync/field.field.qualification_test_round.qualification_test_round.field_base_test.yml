@@ -1,0 +1,26 @@
+uuid: 455cdb1a-5a93-44f4-bf78-9af368e49f88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.qualification_test_round.field_base_test
+  module:
+    - qualification_test_rounds
+id: qualification_test_round.qualification_test_round.field_base_test
+field_name: field_base_test
+entity_type: qualification_test_round
+bundle: qualification_test_round
+label: 'Base test'
+description: 'Select this to import questions and start adding scores. Wait for it to load translations, then you can select language.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: qualification_test_list
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

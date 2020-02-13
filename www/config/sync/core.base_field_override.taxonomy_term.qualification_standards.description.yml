@@ -1,0 +1,20 @@
+uuid: b3d4c770-82c0-432e-8f70-88e780d2511e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.qualification_standards
+  module:
+    - text
+id: taxonomy_term.qualification_standards.description
+field_name: description
+entity_type: taxonomy_term
+bundle: qualification_standards
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

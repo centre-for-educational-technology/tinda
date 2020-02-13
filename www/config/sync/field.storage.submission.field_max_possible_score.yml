@@ -1,0 +1,20 @@
+uuid: 3331bfa2-4b70-4277-95f9-f12aa3aac39f
+langcode: en
+status: true
+dependencies:
+  module:
+    - submissions
+id: submission.field_max_possible_score
+field_name: field_max_possible_score
+entity_type: submission
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
