@@ -80,7 +80,21 @@ class SubmissionsDownloader
               }
 
               // Add question number, submitted answer to the string
-              $qa_string = $qa_string.(string)($temp_count+1).":".$paragraph->get('field_filler_answers')->getString();
+              // $qa_string = $qa_string.(string)($temp_count+1).":".$paragraph->get('field_filler_answers')->getString();
+
+              ############# Add question number, submitted answer to the string (updated version)
+              ### Add qualification standard of each question to downloaded data
+
+
+              if (isset($paragraph->get('field_question')->entity->get('field_qualification_standard')->entity)) {
+                $qa_string = $qa_string.(string)($temp_count+1).":".$paragraph->get('field_filler_answers')->getString().":".$paragraph->get('field_question')->entity->get('field_qualification_standard')->entity->getName();
+              } else {
+                $qa_string = $qa_string.(string)($temp_count+1).":".$paragraph->get('field_filler_answers')->getString().":"."None";
+              }
+
+
+
+
 
               // Increase temp_count
               $temp_count = $temp_count + 1;

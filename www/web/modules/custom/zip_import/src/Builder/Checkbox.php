@@ -58,7 +58,7 @@ class Checkbox implements QuestionBuilderInterface {
     }
 
     $this->entity->set('langcode', $lang);
-    $this->entity->set('name', $data->choiceInteraction->prompt->p);
+    $this->entity->set('name', $data->choiceInteraction->prompt);
     $this->entity->set('field_id', $id[0]);
     $this->entity->set('field_max', $data->choiceInteraction->attributes()->maxChoices[0]);
     $this->entity->set('field_min', $data->choiceInteraction->attributes()->minChoices[0]);

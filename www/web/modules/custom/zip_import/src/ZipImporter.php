@@ -222,6 +222,8 @@ class ZipImporter implements ZipImporterInterface {
       'associateInteraction' => \Drupal\zip_import\Builder\Associate::class,
       'uploadInteraction' => \Drupal\zip_import\Builder\Upload::class,
       'textEntryInteraction' => \Drupal\zip_import\Builder\TextEntry::class,
+      'extendedTextInteraction' => \Drupal\zip_import\Builder\ExtendedText::class,
+      'matchInteraction' => \Drupal\zip_import\Builder\MatchInteraction::class,
     ];
 
     if (isset($builders[$type])) {

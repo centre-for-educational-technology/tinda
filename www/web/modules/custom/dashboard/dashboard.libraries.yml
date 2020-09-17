@@ -1,0 +1,14 @@
+plotly:
+  header: true
+  css:
+    layout:
+      assets/js/dashboard.css: {}
+  js:
+    assets/js/plotly-basic-min.js: {}
+    assets/js/highcharts.js: {}
+    assets/js/highcharts-more.js: {}
+    assets/js/solid-gauge.js: {}
+    assets/js/funnel.js: {}
+    assets/js/jspdf.js: {}
+    assets/js/exporting.js: {}
+    assets/js/canvg.js: {}

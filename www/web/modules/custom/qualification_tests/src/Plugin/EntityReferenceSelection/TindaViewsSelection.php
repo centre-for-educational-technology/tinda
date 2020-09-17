@@ -28,7 +28,26 @@ class TindaViewsSelection extends ViewsSelection {
     $argument_id = \Drupal::request()->get('qualification_standard_id');
     $arguments = $this->getConfiguration()['view']['arguments'];
 
-    $arguments[] = $argument_id;
+    #$arguments[] = $argument_id;
+
+    #############################################
+    /* Functionality to allow addition of questions to test which are associated with children term of qualification standard
+    Author: Pankaj Chejara
+    */
+    $context_filter = $argument_id;
+
+   $child_tids = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('qualification_standards', $argument_id, NULL, TRUE);
+   foreach ($child_tids as $id => $term)
+   {
+     $context_filter = $context_filter.'+'.$term->id();
+   }
+
+   $arguments[] = $context_filter;
+
+    ###########################################
+
+
+
     $result = [];
     if ($this->initializeView(NULL, 'CONTAINS', 0, $ids)) {
       // Get the results.

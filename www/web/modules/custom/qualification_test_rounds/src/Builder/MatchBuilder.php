@@ -1,0 +1,275 @@
+<?php
+
+namespace Drupal\qualification_test_rounds\Builder;
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\qualification_test_rounds\EntityTrait;
+use Drupal\questions\Entity\TestQuestionInterface;
+use Drupal\Core\Render\Markup;
+/**
+ * Class AssociateBuilder.
+ *
+ * @package Drupal\qualification_test_rounds\Builder
+ */
+class MatchBuilder implements FormElementBuilderInterface {
+
+  use BuilderHelpers;
+  use EntityTrait;
+
+  /**
+   * Generates a render array from TestQuestion entity.
+   *
+   * @param \Drupal\questions\Entity\TestQuestionInterface $testQuestion
+   *   Entity which will be processed to the question.
+   * @param int $id
+   *   Id to give to name.
+   * @param null $default_value
+   *   Default value of the element if exists.
+   *
+   * @return array
+   *   Drupal form render array element.
+   */
+  public function build(TestQuestionInterface $testQuestion, int $id, $default_value = NULL) : array {
+    $is_required_question = self::isRequired($testQuestion, $id);
+    $required_pairs = $testQuestion->get('field_min')->getValue()[0]['value'];
+    $max = $testQuestion->get('field_max')->getValue()[0]['value'];
+
+    $columns = $this->getCols($testQuestion->get('field_column_options')->getValue());
+    $rows = $this->getRows($testQuestion->get('field_row_options')->getValue());
+
+    $options = [];
+
+  
+
+
+    // We need to know which checkbox elements need to be checked.
+    // Simply using the #default_value on checkboxes resulted in Drupal
+    // comparing the checkbox name as value and wrong elements being checked.
+    foreach ($options as $key => $name) {
+      $element[$key] = [
+        '#value' => in_array($name, $default_value),
+        '#return_value' => $name,
+      ];
+    }
+
+
+    $pairs = [];
+
+    foreach ($rows as $i=>$row) {
+
+      $pairs[$i] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => [''],
+        ],
+
+        [
+          '#type' => 'checkboxes',
+          '#title'=> $row,
+          '#required' => self::isRequired($testQuestion, $id),
+          '#options' => $columns,
+          '#attributes' => [
+            'class' => [''],
+          ],
+        ],
+
+      ];
+
+    }
+
+      return [
+        '#type' => 'container',
+        'title' => [
+          '#markup' => $testQuestion->getName(),
+        ],
+        'description' => [
+          '#markup' => '<div><span class="m-form__help">' . $testQuestion->getHelpText() . '</span></div>',
+        ],
+        'widget' => $pairs,
+        '#required' => self::isRequired($testQuestion, $id),
+      ];
+
+
+
+  }
+
+  /**
+   * Get Question answer options.
+   *
+   * @param array $options
+   *   Question answer options.
+   *
+   * @return array
+   *   Array of question answers.
+   */
+  protected function getCols(array $options) : array {
+    $form_options = [];
+    foreach ($options as $option) {
+      $option = $this->getEntityByLanguage(Paragraph::load($option['target_id']));
+      if ($option) {
+        $value = $option->get('field_match_column')->getValue()[0]['value'];;
+        $form_options[$value] = $value;
+      }
+    }
+    return $form_options;
+  }
+
+  protected function getRows(array $options) : array {
+    $form_options = [];
+    foreach ($options as $option) {
+      $option = $this->getEntityByLanguage(Paragraph::load($option['target_id']));
+      if ($option) {
+        $value = $option->get('field_match_row')->getValue()[0]['value'];;
+        $form_options[$value] = $value;
+      }
+    }
+    return $form_options;
+  }
+
+  /**
+   * Get Question title.
+   *
+   * @param \Drupal\paragraphs\ParagraphInterface $paragraph
+   *   Paragraph checkbox_selections and get field value.
+   *
+   * @return mixed
+   *   Question title.
+   */
+  protected function getOption(ParagraphInterface $paragraph) : string {
+    return $paragraph->get('field_options')->getValue()[0]['value'];
+  }
+
+
+
+
+
+  /**
+   * Get Question formatted answers.
+   *
+   * @param array $options
+   *   Question options to choose from.
+   *
+   * @return array
+   *   Formatted question possible answers
+   */
+  protected function getSelectOptions(array $options) : array {
+    $form_options = [];
+    foreach ($options as $option) {
+      $option = $this->getEntityByLanguage(Paragraph::load($option['target_id']));
+      if ($option) {
+        $values = $option->get('field_associate_options')->getValue();
+        foreach ($values as $key => $value) {
+          $output = $value['value'];
+          $form_options[$output] = $output;
+        }
+      }
+    }
+    return $form_options;
+  }
+
+  /**
+   * Format answer. Format is: first_of_pair-second_of_pair.
+   *
+   * @param array $answer
+   *   List of answers.
+   *
+   * @return array
+   *   Formatted answer.
+   */
+
+
+
+  public static function formatAnswer(array $answer) : array {
+    $real_answer = self::removeEmptyValues($answer);
+
+    $formatted_answer = [];
+
+    // Access answer aray
+    foreach ($real_answer['widget'] as $key =>$value) {
+
+      $res = $key.'[';
+
+      $temp_ans = '';
+      foreach ($value[0] as $option => $selected){
+        #print(gettype($option).'='.gettype($selected));
+        if(strval($selected) === strval($option)){
+          $temp_ans = $temp_ans.$option.' ';
+        }
+
+
+      }
+      $res = $res.$temp_ans.']';
+      $formatted_answer[] = ['value' => $res];
+
+
+
+    }
+    return $formatted_answer;
+  }
+
+  /**
+   * Validate question.
+   *
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The current state of the form.
+   * @param $answer
+   *   User answers for the question.
+   * @param \Drupal\questions\Entity\TestQuestionInterface $testQuestion
+   *   Testquestion entity.
+   * @param array $element
+   *   Form element array which to validate.
+   *
+   * @return \Drupal\Core\Form\FormStateInterface
+   *   validated form state.
+   */
+  public static function validate(FormStateInterface $form_state, $answer, TestQuestionInterface $testQuestion, array $element) : FormStateInterface {
+    $is_required_question = $element['#required'];
+
+    // Only check for values when the question is marked as required.
+    if ($is_required_question) {
+      $answer = $answer['widget'];
+      $min = $testQuestion->get('field_min')->getValue()[0]['value'];
+      $max = $testQuestion->get('field_max')->getValue()[0]['value'];
+
+      $pairs = 0;
+      foreach ($answer as $pair) {
+        if ($pair[1] && $pair[2]) {
+          $pairs++;
+        }
+        if (($pair[1] && !$pair[2]) || (!$pair[1] && $pair[2])) {
+          $form_state->setError($element,
+            t('@name You need to select from both sides to connect a pair!',
+              [
+                '@name' => $element['title']['#markup'],
+              ]
+            )
+          );
+        }
+      }
+      if ($pairs < (int) $min) {
+        $form_state->setError($element,
+          t('@name You need at least @count pair(s)!',
+            [
+              '@name' => $element['title']['#markup'],
+              '@count' => $min,
+            ]
+          )
+        );
+      }
+      elseif ($pairs > (int) $max) {
+        $form_state->setError($element,
+          t('@name You can have maximum of @count pair(s)!',
+            [
+              '@name' => $element['title']['#markup'],
+              '@count' => $max,
+            ]
+          )
+        );
+      }
+    }
+
+    return $form_state;
+  }
+
+}

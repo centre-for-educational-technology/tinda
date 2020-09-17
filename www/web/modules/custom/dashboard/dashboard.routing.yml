@@ -1,0 +1,28 @@
+dashboard.content:
+  path: '/dashboard-demo'
+  defaults:
+    _controller: '\Drupal\dashboard\Controller\DashController::content'
+    _title: 'Tinda Dashboard'
+  requirements:
+    _permission: 'access content'
+
+dashboard.list:
+  path: '/dashboard-demo/list'
+  defaults:
+    _controller: '\Drupal\dashboard\Controller\DashController::view_list'
+    _title: 'List of Submission'
+  requirements:
+    _permission: 'access content'
+
+
+dashboard.graphs:
+  path: '/dashboard-demo/{submission}'
+  defaults:
+    _controller: '\Drupal\dashboard\Controller\DashController::visualize'
+    _title: 'Tinda Dashboard'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      submission:
+        type: entity:submission

@@ -137,11 +137,15 @@ function tinda_preprocess_page(&$variables) {
     $background_image_url = $url . '/assets/app/media/img/bg/bg-body-overlay.jpg';
     $variables['page']['background_image_url'] = $background_image_url;
 
+    $ack_image_url = $url . '/assets/app/media/img/acknowledge.jpg';
+    $variables['page']['ack_image_url'] = $ack_image_url;
+
+
     if (\Drupal::service('path.matcher')->isFrontPage()) {
 
       $variables['page']['description'] = [
         '#type' => 'markup',
-        '#markup' => '<p class="lead m--font-light c-header-">' . t('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.') . '</p>',
+        '#markup' => '<p class="lead m--font-light c-header-">' . t('Welcome to Tinda.') . '</p>',
       ];
 
     }

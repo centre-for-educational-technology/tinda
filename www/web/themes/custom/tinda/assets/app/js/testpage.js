@@ -37,7 +37,12 @@ var Testpage = function() {
                 },
                 format: wNumb({
                     decimals: 0
-                })
+                }),
+                pips: {
+                    mode: 'values',
+                    values: Array.apply(null, {length: inputDefaultMax+inputDefaultStep}).map(Function.call, Number),
+                    density: 100*inputDefaultStep/((inputDefaultMax-inputDefaultMin))
+                  }
             });
             sliders[i].noUiSlider.on('update', function(e, t) {
                 sliderValues[i].value = e[t];

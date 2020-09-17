@@ -1,0 +1,539 @@
+<div class="container-fluid">
+
+  <h1>{{ title }}</h1>
+
+
+  <hr/>
+  <p>This is prototypical version of Tinda's Dashboard. This dashboard will provide visualisation of Tinda's submission.</p>
+  {{ attach_library('dashboard/plotly') }}
+  <div class="row mb-4
+   <div class="col col-4">
+    <button onclick="report_download()" id='download_report' type="button" class="btn btn-primary">Download Your Report</button>
+    </div>
+   </div>
+
+
+  <div class="row mb-4">
+    <div class="col col-12">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Overall Results</a>
+          <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Competency Level</a>
+          <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Detailed Score</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab"></div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+<div id="nav-home1" style="display:none;"></div>
+
+
+
+<script>
+
+function report_download() {
+
+
+  var doc = new jsPDF();
+
+  doc.setFont("helvetica");
+  doc.setFontType("bold");
+
+
+
+  var text=  'Tinda Test Report';
+  var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+  var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
+
+  var xoffset = pageWidth ;
+
+  var chart1_svg  = chartreport.getSVG();
+
+
+  var canvas = document.createElement('canvas');
+  canvg(canvas, chart1_svg);
+
+  doc.setFontSize(15);
+  doc.text(text, xoffset/2,  30,'center');
+  doc.line(10,40,pageWidth-20,40);
+
+  var imgData = canvas.toDataURL('image/png');
+
+  var chart2_svg  = chart3.getSVG();
+
+
+
+  var canvas1 = document.createElement('canvas');
+  canvg(canvas1, chart2_svg);
+
+
+
+  var imgData1 = canvas1.toDataURL('image/png');
+
+
+
+
+
+
+  doc.setFontSize(10);
+  doc.text("Test Taker:", 10,  45);
+  doc.text("Qualification Standard:", 10,  50);
+  doc.text("Submission Date:",10,55);
+
+
+//
+  doc.setTextColor('#900C3F');
+  doc.text('{{user_name}}',30,45);
+  doc.text(main_title,50,50);
+  doc.text('{{ sub_date }}',40,55);
+
+  doc.line(10,60,pageWidth-20,60);
+
+
+
+
+
+  doc.setTextColor('#900C3F');
+  doc.setFontSize(40);
+  doc.text(main_score.toFixed(2), 10,80);
+
+  doc.text(comp_level,80,80);
+
+  doc.setTextColor('#C70039');
+  doc.setFontSize(10);
+  doc.text('Your Score', 10,85);
+
+  doc.text('Level',80,85);
+
+  doc.text('Detailed score', 10,95);
+  doc.text('Sub-Competency score', 10,pageWidth-15);
+
+
+  doc.addImage(imgData, 'PNG', 10, 100, pageWidth-60, pageWidth-120);
+
+  doc.addImage(imgData1, 'PNG', 10, pageWidth-10, pageWidth-30, pageWidth-120);
+  doc.save('a.pdf');
+
+}
+
+
+
+
+     var test = '{{qual_scores |json_encode() | raw}}';
+      var test1 =  '{"first_name" : "Sammy", "last_name" : "Shark", "location" : "Ocean"}';
+     var a = JSON.parse(test);
+
+    // Main qualification standard
+    for (var key in a) {
+      if (a[key]["parent"] == null) {
+        var main_title = a[key]["label"];
+        var main_score = a[key]["score"]
+      }
+    }
+
+
+    // Chart-1 data preparation
+       // Pane-background list
+       var pane_background = [];
+       var series_data = [];
+       var i = 0;
+       var radius = 100;
+       var diff_inner_outer = 12;
+
+       var sub_dim_colors = {};
+
+        for (var key in a) {
+          if (a[key]["level"] == 1) {
+
+            sub_dim_colors[key] = Highcharts.color(Highcharts.getOptions().colors[i]).setOpacity(1).get();
+            // data for pane_background for first chart
+            var obj = {}
+            obj['outerRadius'] = "" + radius + "%";
+            obj['innerRadius'] = "" + (radius-diff_inner_outer) + "%";
+            obj['backgroundColor'] = Highcharts.color(Highcharts.getOptions().colors[i]).setOpacity(0.3).get();
+            obj['borderWidth'] = 0;
+
+
+
+            // data for series
+            var ser = {};
+            ser['name'] = a[key]['label'];
+            ser['color'] = Highcharts.color(Highcharts.getOptions().colors[i]).setOpacity(1).get();
+            ser['showInLegend'] = true;
+            var temp = [];
+
+            var data_obj = {};
+            data_obj['color'] = Highcharts.color(Highcharts.getOptions().colors[i]).setOpacity(1).get();
+            data_obj['radius'] = "" + radius + "%";
+            data_obj['innerRadius'] = "" + (radius-diff_inner_outer) + "%";
+            data_obj['y'] = a[key]['score']
+
+            temp.push(data_obj);
+
+            ser['data']=temp;
+
+            radius = radius - diff_inner_outer - 1;
+            pane_background.push(obj);
+            series_data.push(ser);
+            i = i+1;
+
+          }
+        }
+
+        var chart2_data = []
+        var levels = ['Novice','Beginner','Competent','Proficient','Expert'];
+        var comp_level = '';
+
+     for (index = 0; index < levels.length; index++){
+          var obj1 = {};
+          obj1['name'] = levels[index];
+          obj1['y'] = 18;
+          obj1['color'] = 'none';
+
+          var lower_limit = index * 18;
+          var upper_limit = (index+1) * 18;
+
+          if ((main_score >= lower_limit) && (main_score < upper_limit)){
+            obj1['color'] = Highcharts.color(Highcharts.getOptions().colors[5]).setOpacity(.5).get();;
+            comp_level = levels[index];
+          }
+
+          chart2_data.push(obj1);
+        }
+
+
+
+
+     // Preparing data for chart 3
+     var categ_data = [];
+     var chart3_data = [];
+     for (var key in a) {
+       if (a[key]["level"] == 2) {
+         var obj2 = {};
+         obj2['name'] = a[key]["label"];
+         obj2['y']= a[key]["score"];
+         obj2['color'] = sub_dim_colors[a[key]["parent"]];
+
+         chart3_data.push(obj2);
+         categ_data.push(a[key]['label']);
+       }}
+
+
+
+
+     // report chart data
+     var bar_data = [];
+     var bar_categ = [];
+
+     // Preparing plot bands data
+
+
+
+
+
+     var chart3_plotband = [];
+     var start = 0;
+     for (var key in a) {
+       if (a[key]["level"] == 1) {
+         obj3 = {};
+         obj3['label'] = {};
+         obj3['label']['text'] = a[key]['label'];
+         obj3['color'] = sub_dim_colors[key];
+         obj3['from'] = start;
+         obj3['to'] = start + a[key]['children_count'] - 1;
+
+         var plotband_style = {};
+         plotband_style['fontSize'] = '1.2em';
+         plotband_style['whitespace'] = 'normal';
+         plotband_style['width'] = 15;
+         plotband_style['color'] = sub_dim_colors[key];
+
+         obj3['label']['style'] = plotband_style;
+
+
+         start = start + a[key]['children_count'];
+
+         // data for bar chart to put in report
+        bar_data.push(a[key]['score']);
+        bar_categ.push(a[key]['label']);
+
+         chart3_plotband.push(obj3);
+       }}
+
+
+
+
+
+
+  // Uncomment to style it like Apple Watch
+/*
+  if (!Highcharts.theme) {
+      Highcharts.setOptions({
+          chart: {
+              backgroundColor: 'black'
+          },
+          colors: ['#F62366', '#9DFF02', '#0CCDD6'],
+          title: {
+              style: {
+                  color: 'silver'
+              }
+          },
+          tooltip: {
+              style: {
+                  color: 'silver'
+              }
+          }
+      });
+  }
+  Skills level
+  http://blog.envole.net/the-five-levels-of-skill-acquisition-novice-beginner-competent-master-and-expert/
+  */
+
+
+ // Chart for report
+ let chartreport = Highcharts.chart('nav-home1', {
+
+   chart: {
+     type: 'column',
+     height: 400,
+     width: 700
+   },
+   credits: {enabled:false},
+
+   title: {
+     text: ''
+   },
+
+   xAxis: {
+     categories: bar_categ
+   },
+
+   yAxis: {
+     allowDecimals: false,
+     min: 0,
+     max:100,
+     title: {
+       text: 'Score'
+     }
+   },
+
+   tooltip: {
+     formatter: function () {
+       return '<b>' + this.x + '</b><br/>' +
+         this.series.name + ': ' + this.y + '<br/>' +
+         'Total: ' + this.point.stackTotal;
+     }
+   },
+
+   plotOptions: {
+     column:{
+       color:Highcharts.getOptions().colors[3]
+     }
+   },
+   legend: {
+     enabled: false
+   },
+   series: [{
+     name: 'Competency Scores',
+     data: bar_data,
+   }]
+ });
+
+
+// First chart
+  let chart1 = Highcharts.chart('nav-home', {
+
+      chart: {
+        type: 'solidgauge',
+        height: '80%',
+
+      },
+      credits: {enabled:false},
+      title: {
+        text: '<span style="font-size:1.4em; color: dodgerblue; font-weight: bold">' + main_title + '</span><br/>Overall Score <br><span style="font-size:2em; color: dodgerblue; font-weight: bold">'+main_score.toFixed(2)+'%</span>',
+        style: {
+          fontSize: '24px'
+        }
+      },
+
+      tooltip: {
+        borderWidth: 0,
+        backgroundColor: 'none',
+        shadow: false,
+        style: {
+          fontSize: '16px'
+        },
+        valueSuffix: '%',
+        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}</span>',
+        positioner: function (labelWidth) {
+          return {
+            x: (this.chart.chartWidth - labelWidth) / 2,
+            y: (this.chart.plotHeight / 2) + 15
+          };
+        }
+      },
+      legend:{
+        labelFormatter: function() {
+          return '<span style="text-weight:bold;color:' + this.userOptions.color + '">' + this.name + '</span>';
+        },
+
+      },
+
+      pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: pane_background
+      },
+
+      yAxis: {
+        min: 0,
+        max: 100,
+        lineWidth: 0,
+        tickPositions: []
+      },
+
+      plotOptions: {
+        solidgauge: {
+          dataLabels: {
+            enabled: false
+          },
+          linecap: 'round',
+          stickyTracking: false,
+          rounded: true
+        }
+      },
+
+      series: series_data
+    });
+
+  let chart2 = Highcharts.chart('nav-profile', {
+
+    chart: {
+      type: 'pyramid',
+      marginRight: 100,
+      width:700,
+
+    },
+    responsive: {
+      rules: [{
+        condition: {
+          maxWidth: 400
+        }
+      }
+      ]
+    },
+    tooltip: { enabled: false },
+    credits: {enabled:false},
+    title: {
+      text: 'Competency Level',
+      x: -50
+    },
+    plotOptions: {
+      series: {
+        dataLabels: {
+          inside: true,
+          format: '<span style="font-size:1.2em; color: Highcharts.getOptions().colors[3]; font-weight: bold">{point.name}</span>',
+          color: (Highcharts.theme ) || 'black',
+          softConnector: true
+        }
+      },
+      funnel: {
+        reversed: false
+      }
+    },
+    legend: {
+      enabled: false
+    },
+    series: [{
+      name: '<span style="font-size:2em; color: Highcharts.getOptions().colors[3]; font-weight: bold">Competency Level</span>',
+      borderWidth: 2,
+      borderColor: 'red',
+      data: chart2_data
+    }]
+  });
+
+
+
+  let chart3 = Highcharts.chart('nav-contact', {
+    credits: {enabled:false},
+    series: [
+      {
+        "name": main_title,
+        "data": chart3_data,
+        "color": "rgb(234, 94, 53)",
+        "type": "column"
+      },
+
+    ],
+    legend:{
+      enabled:false
+      },
+    dataLabels: {
+      enabled: true,
+    },
+    title:{
+      text: '<h2> Sub-Competency Score </h2><br/><span style=" color: dodgerblue; font-weight: bold">'+ main_title + '</span>',
+
+      margin:80,
+    },
+
+    chart: {
+      polar: true,
+      type: 'column',
+      width: 900,
+      height:600
+    },
+
+    pane: {
+      size: '95%'
+    },
+
+
+    xAxis: {
+      plotBands: chart3_plotband,
+      labels:{enabled:false},
+      tickmarkPlacement: 'on',
+      categories:categ_data
+    },
+
+    yAxis: {
+      min: 0,
+      max:100,
+      endOnTick: false,
+      showLastLabel: true,
+      labels: {
+        formatter: function () {
+          return this.value + '%';
+        }
+      },
+      reversedStacks: false
+    },
+
+    tooltip: {
+      valueSuffix: '%'
+    },
+
+    plotOptions: {
+      series: {
+        stacking: 'normal',
+        shadow: false,
+        groupPadding: 0,
+        pointPlacement: 'on'
+      }
+    }
+  });
+
+
+
+
+
+</script>

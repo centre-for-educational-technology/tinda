@@ -22,6 +22,8 @@ use Drupal\qualification_test_rounds\Builder\OrderFieldBuilder;
 use Drupal\qualification_test_rounds\Builder\RangeBuilder;
 use Drupal\qualification_test_rounds\Builder\TextFieldBuilder;
 use Drupal\qualification_test_rounds\Builder\UploadBuilder;
+use Drupal\qualification_test_rounds\Builder\MatchBuilder;
+use Drupal\qualification_test_rounds\Builder\ExtendedTextFieldBuilder;
 use Drupal\qualification_test_rounds\EntityTrait;
 use Drupal\questions\Entity\TestQuestionInterface;
 use Drupal\submissions\Entity\Submission;
@@ -239,6 +241,8 @@ class QualificationTestRoundFillForm extends ContentEntityForm {
       'textentry' => TextFieldBuilder::class,
       'upload' => UploadBuilder::class,
       'order' => OrderFieldBuilder::class,
+      'extended_text' => ExtendedTextFieldBuilder::class,
+      'match_interaction' => MatchBuilder::class,
     ];
 
     if (isset($types[$question_type])) {
