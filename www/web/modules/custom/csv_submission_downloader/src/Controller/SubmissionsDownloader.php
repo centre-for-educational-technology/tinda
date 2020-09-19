@@ -56,6 +56,11 @@ class SubmissionsDownloader
       // Get field_test_round and load it
       $test_round = \Drupal::entityTypeManager()->getStorage('qualification_test_round')->load($entity->get('field_test_round')->target_id);
 
+	 if(is_null($test_round)) {
+      	continue;
+      }
+      
+
       // Get number of question from the test round
       $max_question_count = $test_round->countQuestions();
 
