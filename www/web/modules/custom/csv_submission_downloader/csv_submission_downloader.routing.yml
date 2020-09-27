@@ -5,3 +5,12 @@ csv_submission_downloader.content:
     _title: 'Submission Downloader'
   requirements:
     _permission: 'access administration pages'
+    
+
+download.form:
+ path: '/submissions/downloadform'
+ defaults:
+   _title: 'Download Submission Data'
+   _form: '\Drupal\csv_submission_downloader\Form\TestForm'
+ requirements:
+   _permission: 'access content'
