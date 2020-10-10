@@ -40,7 +40,7 @@ class MatchBuilder implements FormElementBuilderInterface {
 
     $options = [];
 
-  
+
 
 
     // We need to know which checkbox elements need to be checked.
@@ -54,6 +54,29 @@ class MatchBuilder implements FormElementBuilderInterface {
     }
 
 
+// Code for tabular checkboxes: Issue with label
+
+    // Preparing column checkboxes
+    $col_options = array();
+    $header_options = array();
+
+    $header_options[] = ['#markup' => '<th></th>'];
+
+    foreach($columns as $i => $col) {
+      $col_options [] = [
+        '#type' => 'checkbox',
+        '#title'=> '',
+        '#return_value' => $col,
+        '#prefix' => '<td>',
+        '#suffix' => '</td>',
+      ];
+      $header_options [] = [
+        '#markup' => '<th>'.$col.'</th>',
+      ];
+    }
+
+
+
     $pairs = [];
 
     foreach ($rows as $i=>$row) {
@@ -63,20 +86,20 @@ class MatchBuilder implements FormElementBuilderInterface {
         '#attributes' => [
           'class' => [''],
         ],
-
+        '#prefix' => '<tr>',
+        '#suffix' => '</tr>',
         [
-          '#type' => 'checkboxes',
-          '#title'=> $row,
-          '#required' => self::isRequired($testQuestion, $id),
-          '#options' => $columns,
-          '#attributes' => [
-            'class' => [''],
-          ],
+          '#markup' => '<td>'.$row.'</td>',
+
         ],
+
+        $col_options,
 
       ];
 
     }
+
+    $pairs  = array_merge($header_options,$pairs);
 
       return [
         '#type' => 'container',
@@ -88,6 +111,8 @@ class MatchBuilder implements FormElementBuilderInterface {
         ],
         'widget' => $pairs,
         '#required' => self::isRequired($testQuestion, $id),
+        '#prefix' => '<table class="table">',
+        '#suffix' => '</table>',
       ];
 
 
@@ -191,20 +216,28 @@ class MatchBuilder implements FormElementBuilderInterface {
       $res = $key.'[';
 
       $temp_ans = '';
-      foreach ($value[0] as $option => $selected){
+
+
+      foreach ($value[1] as $option => $selected){
+        #print($option.'='.$selected);
         #print(gettype($option).'='.gettype($selected));
-        if(strval($selected) === strval($option)){
-          $temp_ans = $temp_ans.$option.' ';
+        if(strval($selected) != '0') {
+          // replacing whitespace with underscore
+          $selected = str_replace(' ', '_', $selected);
+          $temp_ans = $temp_ans.$selected.' ';
         }
 
 
       }
       $res = $res.$temp_ans.']';
+      
       $formatted_answer[] = ['value' => $res];
 
 
 
     }
+    #print_r($formatted_answer);
+    
     return $formatted_answer;
   }
 
@@ -273,3 +306,4 @@ class MatchBuilder implements FormElementBuilderInterface {
   }
 
 }
+
