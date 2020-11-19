@@ -37,7 +37,7 @@
         "drupal/allowed_formats": "^1.1",
         "drupal/anonymous_redirect": "^2.2@beta",
         "drupal/console": "^1.0.2",
-        "drupal/core": "~8.7.0",
+        "drupal/core": "~8.8.0",
         "drupal/csv_importer": "^1.4",
         "drupal/dropzonejs": "^2.0@alpha",
         "drupal/email_registration": "1.x-dev",
@@ -85,9 +85,6 @@
     "extra": {
         "composer-exit-on-patch-failure": true,
         "patches": {
-            "drupal/core": {
-                "Issue #2877994": "https://www.drupal.org/files/issues/2019-02-24/2877994-98.patch"
-            },
             "drupal/dropzonejs": {
                 "Issue #2798543": "https://www.drupal.org/files/issues/cannot_instantiate-2798543-3.patch"
             },
