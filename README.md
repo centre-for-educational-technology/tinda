@@ -2,7 +2,7 @@
 A tool to assess digital competency skills.
 
 ## System Specification
-* Drupal 8.7
+* Drupal 8.8
 * Php 7.3
 
 ## Usage and Running the development
