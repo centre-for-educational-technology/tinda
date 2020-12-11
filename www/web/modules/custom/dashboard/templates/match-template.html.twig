@@ -1,0 +1,119 @@
+<div class="container-fluid">
+
+  <h1>{{ title }}</h1>
+
+
+  <hr/>
+  <p>This dashboard presents the statistics of overall submission for each question in intrument 4.</p>
+  {{ attach_library('dashboard/plotly') }}
+
+  {% set tot_q = q_labels | length%}
+
+  <div class="row mb-4">
+    <div class="col col-12">
+
+
+    {% for q in 0..tot_q%}
+        <div  id="container-{{loop.index0}}" ></div>
+
+
+    {% endfor %}
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+<div id="nav-home1" style="display:none;"></div>
+
+
+
+<script>
+     var scores = '{{q_labels |json_encode() | raw}}';
+     var submissions = '{{q_scores |json_encode() | raw}}';
+
+     var p_scores = JSON.parse(scores);
+
+     console.log(p_scores);
+
+     console.log(p_scores[0]['labels']);
+
+    var series_data = {};
+
+
+
+
+
+for (var key in p_scores) {
+  var container = 'container-' + key;
+  console.log(container);
+
+     Highcharts.chart(container, {
+         chart: {
+             type: 'bar',
+             events: {
+              load: function() {
+                var chart = this,
+                barsLength = chart.series[0].data.length;
+
+                chart.update({
+                chart: {
+                height: 100 + 50 * barsLength
+                }
+                }, true, false, false);
+                }
+   }
+         },
+         title: {
+             text: p_scores[key]['question'],
+             align: 'left'
+         },
+
+         xAxis: {
+             categories: p_scores[key]['labels'],
+             title: {
+                 text: null,
+
+
+             },
+             labels: {
+                 align: 'right',
+             }
+
+         },
+         yAxis: {
+             min: 0,
+             title: {
+                 text: 'Scores',
+                 align: 'high'
+             },
+             labels: {
+                 overflow: 'justify'
+             }
+         },
+         tooltip: {
+             valueSuffix: ''
+         },
+         plotOptions: {
+             bar: {
+                 dataLabels: {
+                     enabled: true
+                 }
+             }
+         },
+
+         credits: {
+             enabled: false
+         },
+         series: [{
+         showInLegend: false,
+             data: p_scores[key]['avg_scores']
+         }]
+     });
+     }
+
+
+</script>
