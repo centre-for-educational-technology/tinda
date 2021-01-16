@@ -39,6 +39,51 @@ $table-inverse-color:           $body-bg !default;
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+ #edit-openid-connect-client-harid-login:before{
+     content: "";
+     width: 46px;
+     height: 16px;
+     display: inline-block;
+     margin-right: 5px;
+     vertical-align: text-top;
+     background-color: transparent;
+     background-position : center center;
+     background-repeat:no-repeat;
+       background-image : url(/tinda/themes/custom/tinda/assets/app/media/img/harid.png);
+
+  }
+
+
+  #edit-openid-connect-client-harid-login{
+    background-color:#009933;
+    border:none;
+ }
+  #edit-openid-connect-client-harid-login:hover{
+   background-color:#00b040;
+ }
+
+  .or-container {
+      align-items: center;
+      color: #343a40;
+      display: flex;
+      margin: 25px 0
+  }
+  .line-separator {
+      background-color: #ccc;
+      flex-grow: 5;
+      height: 1px
+  }
+
+  .or-label {
+      flex-grow: 1;
+      color: #ccc;
+      margin: 0 15px;
+      text-align: center
+  }
+
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

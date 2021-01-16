@@ -29,16 +29,16 @@ dashboard.graphs:
 
 
 dashboard.list_instr4:
-  path: '/instrument4_dash/list'
+  path: '/all'
   defaults:
-    _controller: '\Drupal\dashboard\Controller\DashController::view_list_instr4'
-    _title: 'List of Submissions for Instrument 4'
+    _controller: '\Drupal\dashboard\Controller\DashController::listAllSubmissions'
+    _title: 'List of Submissions'
   requirements:
     _permission: 'access content'
 
 
 dashboard.graphs_instr4:
-  path: '/instrument4_dash/{submission}'
+  path: '/instrument4_dash/{submission}/{this_test}'
   defaults:
     _controller: '\Drupal\dashboard\Controller\DashController::visualize_instr4'
     _title: 'Tinda Dashboard'
@@ -48,3 +48,13 @@ dashboard.graphs_instr4:
     parameters:
       submission:
         type: entity:submission
+      this_test:
+        type: string
+
+dashboard.my_submissions:
+  path: '/submissions'
+  defaults:
+    _controller: '\Drupal\dashboard\Controller\DashController::listSubmission'
+    _title: 'My Submissions'
+  requirements:
+    _permission: 'access content'

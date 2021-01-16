@@ -4,7 +4,7 @@
 
 
   <hr/>
-  <p>This dashboard presents the statistics of overall submission for each question in intrument 4.</p>
+  <p>This dashboard presents the statistics of overall submission.</p>
   {{ attach_library('dashboard/plotly') }}
 
   {% set tot_q = q_labels | length%}
@@ -32,8 +32,18 @@
 
 
 <script>
+
+
+
      var scores = '{{q_labels |json_encode() | raw}}';
      var submissions = '{{q_scores |json_encode() | raw}}';
+
+     var submission_responses = JSON.parse('{{responses |json_encode() | raw}}');
+
+
+
+
+    scores = scores.replace(/(\r\n|\n|\r)/gm, "");
 
      var p_scores = JSON.parse(scores);
 
@@ -44,12 +54,17 @@
     var series_data = {};
 
 
-
+  console.log('Submission responses');
+  console.log(submission_responses);
 
 
 for (var key in p_scores) {
   var container = 'container-' + key;
+
+
   console.log(container);
+  console.log(key);
+  console.log(submission_responses[key]);
 
      Highcharts.chart(container, {
          chart: {
@@ -61,11 +76,11 @@ for (var key in p_scores) {
 
                 chart.update({
                 chart: {
-                height: 100 + 50 * barsLength
+                height: 60 + 40 * barsLength
                 }
                 }, true, false, false);
-                }
-   }
+                 }
+              }
          },
          title: {
              text: p_scores[key]['question'],
@@ -85,7 +100,8 @@ for (var key in p_scores) {
 
          },
          yAxis: {
-             min: 0,
+             min: {{ min }},
+             max: {{ max }},
              title: {
                  text: 'Scores',
                  align: 'high'
@@ -94,9 +110,7 @@ for (var key in p_scores) {
                  overflow: 'justify'
              }
          },
-         tooltip: {
-             valueSuffix: ''
-         },
+
          plotOptions: {
              bar: {
                  dataLabels: {
@@ -108,10 +122,21 @@ for (var key in p_scores) {
          credits: {
              enabled: false
          },
-         series: [{
-         showInLegend: false,
+         series: [
+           {
+             showInLegend: false,
+
+             name: 'average',
              data: p_scores[key]['avg_scores']
-         }]
+            },
+           {
+             type: 'spline',
+             color: '#6f42c1' ,
+             showInLegend: false,
+             name: 'your response',
+            data: submission_responses[key],
+
+           }]
      });
      }
 

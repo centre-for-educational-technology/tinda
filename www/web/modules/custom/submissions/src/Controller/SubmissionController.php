@@ -184,7 +184,6 @@ class SubmissionController extends ControllerBase implements ContainerInjectionI
            . '<h2 class="t--font-primary mb-3">' . $this->t('Well done! Submission saved!') . '</h2>'
            . '<p>' . $this->t('Submission thank you page description') . '</p>'
            . '<a href="' . $front_page . '" class="btn btn-focus m-btn--pill pl-5 pr-5 mt-4">' . $this->t('Homepage') .'</a>'
-           . '<a href="' . $url->toString() . '" class="btn btn-focus m-btn--pill pl-4 pr-4 mt-3">' . $this->t('Check Your Scores') .'</a>'
         . '</div>'
       . '</div>',
     ];

@@ -7,7 +7,10 @@ return array(
     'variables' => array('title' => NULL,'qual_scores' => NULL,'user_name'=>NULL,'sub_date'=>NULL),
     ),
     'match_template' => array(
-      'variables' => array('title' => NULL,'q_labels' => NULL,'q_scores'=>NULL),
+      'variables' => array('title' => NULL,'q_labels' => NULL,'q_scores'=>NULL,'responses'=>NULL,'min'=>NULL,'max'=>NULL),
       ),
+  'hello_template' => array(
+    'variables' => array('title' => NULL,'headers' => NULL,'rows'=>NULL),
+  ),
   );
 }

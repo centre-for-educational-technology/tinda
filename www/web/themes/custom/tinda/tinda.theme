@@ -97,7 +97,7 @@ function tinda_form_user_pass_reset_alter(&$form, FormStateInterface $form_state
 
   $form['gdpr'] = [
     '#type' => 'checkbox',
-    '#title' => t('One time login GDRP field title. <a href="/terms-of-service">Terms of Service</a>'),
+    '#title' => t('One time login GDRP field title. <a href="https://www.tlu.ee/isikuandmete-tootlemine-andmekaitsetingimused" target="_blank">Terms of Service</a>'),
     '#required' => TRUE,
     '#prefix' => '<div class="m-form__group form-group mt-4"><div class="custom-control custom-checkbox t-checkbox t-checkbox--state-brand mb-2">',
     '#suffix' => '</div></div>',

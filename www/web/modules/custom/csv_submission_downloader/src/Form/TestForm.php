@@ -103,8 +103,11 @@ class TestForm extends FormBase {
       // question label
       $question_label = (string)($que->get('field_question')->entity->get('name')->value);
 
+
+	$remove_character = array("\n","\r\n","\r",",");
+
       // Replace command with dot
-      $question_label = str_replace(',',' ',$question_label);
+      $question_label = str_replace($remove_character,' ',$question_label);
 
       // Accessing question type
       $question_type = $que->get('field_question')->entity->get('type')->getValue()['0']['target_id'];

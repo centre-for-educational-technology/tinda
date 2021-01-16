@@ -2,5 +2,5 @@ hello.admin:
   title: 'Visualisation'
   description: 'Visualize submission results'
   parent: views_view:views.submissions.submission_collection
-  route_name: dashboard.content
+  route_name: dashboard.list_instr4
   weight: 120

@@ -14,6 +14,95 @@ use Drupal\Core\Render\Markup;
 
 class DashController
 {
+  public function listSubmission()
+  {
+    // Get ids of all submission entities.
+    $ids = \Drupal::entityQuery('submission')->execute();
+
+    // get storage interface for paragraph entity type
+    $para_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+    // Load all submission entities
+    $submissions = \Drupal::entityTypeManager()->getStorage('submission')->loadMultiple($ids);
+
+
+    $headers = ['Test', 'Submitted on','Responses'];
+    $rows = [];
+
+    if (sizeof($submissions)==0) {
+      return array(
+        '#markup' => 'You do not have any submissions.',
+      );
+    }
+
+
+    // Iterate over submission ids
+    foreach ($submissions as $id => $entity)
+    {
+
+      $test_round_name = $entity->get('field_test_round');
+
+      // Get field_test_round and load it
+      $test_round = \Drupal::entityTypeManager()->getStorage('qualification_test_round')->load($entity->get('field_test_round')->target_id);
+
+
+
+      if(is_null($test_round)) {
+        continue;
+      }
+      // Get base test of submission
+      $base_test = $test_round->get('field_base_test')->entity;
+
+      $test_name = $test_round->getName();
+
+      $test_standard = $base_test->get('field_qualification_standard')->entity;
+
+      if(is_null($test_standard)) {
+        continue;
+      }
+
+
+      // Get the standard name
+      $standard_name = $test_standard->getName();
+
+      $user = \Drupal::currentUser()->id();
+
+
+
+
+        $filler_id = $entity->get('field_filler')->target_id;
+
+      if ($user == $filler_id){
+
+        if ($standard_name == 'Õpetaja digipädevuste mudel 2020') {
+          $url = Url::fromRoute('dashboard.graphs',['submission' =>$entity->id()]);
+        }
+        else {
+          $url = Url::fromRoute('dashboard.graphs_instr4',['submission' =>$entity->id(),'this_test'=>$test_name]);
+        }
+
+
+        $link = Link::fromTextandUrl('Dashboard',$url);
+        $rows [] = [$test_name, $entity->get('field_finished_answering')->getString(),$link];
+      }
+
+    }
+
+    if(empty($rows)){
+      return array(
+        '#markup' => 'You do not have any submissions.',
+      );
+    }
+  else {
+    return array(
+      '#theme' => 'hello_template',
+      '#title' => 'My submissions',
+      '#headers' => $headers,
+      '#rows' => $rows,
+    );
+  }
+
+  }
 
   # array to store data
   public function content()
@@ -47,7 +136,9 @@ class DashController
       // Get field_test_round and load it
       $test_round = \Drupal::entityTypeManager()->getStorage('qualification_test_round')->load($entity->get('field_test_round')->target_id);
 
-
+      if(is_null($test_round)) {
+        continue;
+      }
 
       // Get base test of submission
       $base_test = $test_round->get('field_base_test')->entity;
@@ -72,6 +163,8 @@ class DashController
 
         // Get the standard name
         $standard_name = $test_standard->getName();
+
+
 
         // Process only base test with all slider questions
         if ($standard_name == 'Õpetaja digipädevuste mudel 2020' && $filler->getUserName()=='katiaus') {
@@ -239,10 +332,9 @@ class DashController
 
     }
 
-    public function view_list_instr4()
+    public function listAllSubmissions()
     {
-
-      # All Submission Ids
+      // Get ids of all submission entities.
       $ids = \Drupal::entityQuery('submission')->execute();
 
       // get storage interface for paragraph entity type
@@ -251,177 +343,81 @@ class DashController
       // Load all submission entities
       $submissions = \Drupal::entityTypeManager()->getStorage('submission')->loadMultiple($ids);
 
-      if (sizeof($submissions) == 0) {
+
+      $headers = ['Test', 'Submitted on','Responses'];
+      $rows = [];
+
+      if (sizeof($submissions)==0) {
         return array(
-          '#markup' => 'There are no submissions.',
+          '#markup' => 'You do not have any submissions.',
         );
       }
 
 
-      $headers = ['Test-name', 'Person', 'Overall-score', 'Dashboard'];
-      $rows = array();
-
-      $q_scores = array();
-      $q_labels = array();
-
-      $q_total_scors = array();
-
-      $is_label_set =  false;
-
-
-
-
       // Iterate over submission ids
+      foreach ($submissions as $id => $entity)
+      {
 
-      foreach ($submissions as $id => $entity) {
-
-        $key_start = 0;
-
-
-        // Get all submitted answers for submissions
-        $ques_ans_ids = $entity->get('field_submission_answers');
+        $test_round_name = $entity->get('field_test_round');
 
         // Get field_test_round and load it
         $test_round = \Drupal::entityTypeManager()->getStorage('qualification_test_round')->load($entity->get('field_test_round')->target_id);
 
 
 
-        // Get test round name
-        if (! isset($test_round)){
+        if(is_null($test_round)) {
+          continue;
+        }
+        // Get base test of submission
+        $base_test = $test_round->get('field_base_test')->entity;
+
+        $test_name = $test_round->getName();
+
+        $test_standard = $base_test->get('field_qualification_standard')->entity;
+
+        if(is_null($test_standard)) {
           continue;
         }
 
 
-        $test_name = $test_round->getName();
+        // Get the standard name
+        $standard_name = $test_standard->getName();
 
-
-
-        // Get the submitter's id
-        $filler = \Drupal::entityTypeManager()->getStorage('user')->load($entity->get('field_filler')->target_id);
-
-
-
-
-        // check if base test is associated with qualification standard
-        if ($test_name == 'Õpetajakoolituse instrument 4') {
-
-
-
-          // populating the questions lables and rows options
-          if(!$is_label_set)
-          {
-          // Iterate over each submitted ansnwer
-          foreach($ques_ans_ids as $qaid => $qaobject)
-            {
-
-              // Access paragraph containting question_id and submitted_answer pair
-              $paragraph = $para_storage->load($qaobject->target_id);
-
-
-              $q = $paragraph->get('field_question')->entity;
-
-              $tmp = array();
-
-
-                // Getting row options for the match interaction question
-                $field_options_ids = $q->get('field_row_options')->getValue();
-
-                foreach($field_options_ids as $field_options_id) {
-                  $option = $para_storage->load($field_options_id['target_id']);
-                  $tmp [] = $option->get('field_match_row')->getValue()[0]['value'];
-                }
-                // End code: Getting row options for the match interaction question
-                $q_labels [] = array('question'=>$q->getName(),'options'=>$tmp);
-              }
-            }
-
-            $is_label_set = true;
+        $user = \Drupal::currentUser()->id();
 
 
 
 
-          // Iterate over each submitted ansnwer
-          foreach($ques_ans_ids as $qaid => $qaobject)
-            {
-
-              // Access paragraph containting question_id and submitted_answer pair
-              $paragraph = $para_storage->load($qaobject->target_id);
+        $filler_id = $entity->get('field_filler')->target_id;
 
 
-              $q = $paragraph->get('field_question')->entity;
+          if ($standard_name == 'Õpetaja digipädevuste mudel 2020') {
+            $url = Url::fromRoute('dashboard.graphs',['submission' =>$entity->id()]);
+          }
+          else {
+            $url = Url::fromRoute('dashboard.graphs_instr4',['submission' =>$entity->id(),'this_test'=>$test_name]);
+          }
 
 
-              $q_type = $paragraph->get('field_question')->entity->get('type')->getValue()['0']['target_id'];
-
-
-
-              // Processing match interaction type
-              if ($q_type === 'match_interaction')
-              {
-                $responses = array();
-                $answers = $paragraph->get('field_filler_answers')->getString();
-
-                // extracting answers from brackets
-                 preg_match_all("/\[([^\]]*)\]/", $answers, $matches);
-
-                 // Add answers to the row
-                 foreach ($matches[1] as $ans){
-
-                  //print('answer:'.$ans.','.intval($ans[0]));
-                  $responses [] = intval($ans[0]);
-
-                }
-                $q_scores [] = array(
-                              'submission_id'=>$id,
-                              'answers'=>$responses
-                              );
-
-
-              }
-              // processing other types
-              else{
-                if ($row != "") {
-                 $row= $row.','.$paragraph->get('field_filler_answers')->getString();
-                } else {
-                   $row= $paragraph->get('field_filler_answers')->getString();
-
-                }
-
-
-              }
-
-            }
-
-            //print_r($q_scores);
-
-            // loop end for iterate over each submitted answer
-
-
-
-            //print($filler->getUserName());
-            // Create rows for table
-            $url = Url::fromRoute('dashboard.graphs_instr4',['submission' =>$entity->id()]);
-
-            $link = Link::fromTextandUrl('Dashboard',$url);
-            $rows [] = [$test_name, $filler->getUserName(), 10, $link];
-
-
-
-
-
-        }
-
-
+          $link = Link::fromTextandUrl('Dashboard',$url);
+          $rows [] = [$test_name, $entity->get('field_finished_answering')->getString(),$link];
 
 
       }
 
-
-      return [
-        '#type' => 'table',
-        '#hdeader' => $headers,
-        '#rows' => $rows,
-      ];
+      if(empty($rows)){
+        return array(
+          '#markup' => 'There are no submissions for qualification tests with visualization support.',
+        );
+      }
+      else {
+        return array(
+          '#theme' => 'hello_template',
+          '#title' => 'All submissions',
+          '#headers' => $headers,
+          '#rows' => $rows,
+        );
+      }
 
     }
 
@@ -523,9 +519,23 @@ class DashController
 
 
 // visualize code for instrument 4
-public function visualize_instr4(Submission $submission)
+public function visualize_instr4(Submission $submission,$this_test)
 {
 
+    $min = 1;
+    $max = 6;
+
+    if ($this_test == 'Õpetajakoolituse instrument 3'){
+      $max = 7;
+    }
+  if ($this_test != 'Õpetajakoolituse instrument 4' && $this_test != 'Õpetajakoolituse instrument 5' && $this_test != 'Õpetajakoolituse instrument 3')
+  {
+    return array(
+      '#markup' => 'The visualization is not supported for this qualification test at the moment. ',
+
+    );
+  }
+    $sub_id = $submission->id();
 
     $total_submissions = 0;
 
@@ -555,8 +565,9 @@ public function visualize_instr4(Submission $submission)
 
     $is_label_set =  false;
 
-
-
+  $submission_responses = Null;
+  $submission_extra = Null;
+  $ex_responses =  array();
 
     // Iterate over submission ids
 
@@ -586,26 +597,39 @@ public function visualize_instr4(Submission $submission)
       // Get the submitter's id
       $filler = \Drupal::entityTypeManager()->getStorage('user')->load($entity->get('field_filler')->target_id);
 
-
+     if ($test_name != $this_test){
+       continue;
+     }
 
 
       // check if base test is associated with qualification standard
-      if ($test_name == 'Õpetajakoolituse instrument 4') {
+      if ($test_name == 'Õpetajakoolituse instrument 4' || $test_name == 'Õpetajakoolituse instrument 5' || $test_name == 'Õpetajakoolituse instrument 3')
+      {
 
         $total_submissions = $total_submissions + 1;
 
-        // populating the questions lables and rows options
+        // populating the questions labels and rows options
         if(!$is_label_set)
         {
-        // Iterate over each submitted ansnwer
+        // Iterate over each submitted answer
         foreach($ques_ans_ids as $qaid => $qaobject)
           {
 
-            // Access paragraph containting question_id and submitted_answer pair
+            // Access paragraph containing question_id and submitted_answer pair
             $paragraph = $para_storage->load($qaobject->target_id);
 
 
             $q = $paragraph->get('field_question')->entity;
+
+
+
+            $q_type = $paragraph->get('field_question')->entity->get('type')->getValue()['0']['target_id'];
+
+            if($q_type == 'extended_text') {
+
+
+              continue;
+            }
 
             $tmp = array();
 
@@ -618,7 +642,10 @@ public function visualize_instr4(Submission $submission)
                 $tmp [] = $option->get('field_match_row')->getValue()[0]['value'];
               }
               // End code: Getting row options for the match interaction question
-              $q_labels [] = array('question'=>$q->getName(),'options'=>$tmp);
+              $q_text = $q->getName();
+
+
+              $q_labels [] = array('question'=>$q_text,'options'=>$tmp);
             }
           }
 
@@ -626,12 +653,14 @@ public function visualize_instr4(Submission $submission)
 
 
 
+
+
         $all_responses = array();
-        // Iterate over each submitted ansnwer
+        // Iterate over each submitted answer
         foreach($ques_ans_ids as $qaid => $qaobject)
           {
 
-            // Access paragraph containting question_id and submitted_answer pair
+            // Access paragraph containing question_id and submitted_answer pair
             $paragraph = $para_storage->load($qaobject->target_id);
 
 
@@ -655,25 +684,53 @@ public function visualize_instr4(Submission $submission)
                foreach ($matches[1] as $ans){
 
                 //print('answer:'.$ans.','.intval($ans[0]));
-                $responses [] = intval($ans[0]);
+                $responses [] = intval(substr($ans,0,1));
 
               }
 
-
+              $all_responses [] = $responses;
 
             }
-            $all_responses [] = $responses;
+             if($q_type === 'extended_text') {
+
+              $ex_responses [] = array(
+                                  'question_id' => $paragraph->get('field_question')->entity->id(),
+                                  'ex_response' => $paragraph->get('field_filler_answers')->getString()
+                                );
+
+            }
+
+            // storing responses
+
+
+
+
 
           }
           $q_scores [] = array(
                         'submission_id'=>$id,
-                        'answers'=>$all_responses
+                        'answers'=>$all_responses,
+
                         );
+
+        //print('Submission:');
+        //print_r($sub_id.'-');
+        //print_r($id);
+        // Getting responses for specified submission id
+        if ($id == $sub_id) {
+
+          $submission_responses = $all_responses; // Responses for specified submission id
+
+        }
+
+        //End - Getting responses for specified submission id* */
+
 
       }
 
     }
 
+    //print_r($submission_responses);
 
     $total_scores = array();
     //print_r($q_labels);
@@ -729,10 +786,15 @@ for($k=0;$k<sizeof($total_scores);$k++){
 
     return array(
       '#theme' => 'match_template',
-      '#title' => 'Dashboard',
+      '#title' => $this_test,
+      '#extra' => $submission_extra,
       '#q_labels' => $total_scores ,
       '#q_scores' => $total_submissions,
       '#no_questions' => sizeof($total_scores),
+      '#min' => $min,
+      '#max' => $max,
+      '#responses' => $submission_responses,
+
     );
 
 

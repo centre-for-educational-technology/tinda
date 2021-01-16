@@ -230,14 +230,14 @@ class MatchBuilder implements FormElementBuilderInterface {
 
       }
       $res = $res.$temp_ans.']';
-      
+
       $formatted_answer[] = ['value' => $res];
 
 
 
     }
     #print_r($formatted_answer);
-    
+
     return $formatted_answer;
   }
 
@@ -260,50 +260,52 @@ class MatchBuilder implements FormElementBuilderInterface {
     $is_required_question = $element['#required'];
 
     // Only check for values when the question is marked as required.
+    // Only check for values when the question is marked as required.
     if ($is_required_question) {
-      $answer = $answer['widget'];
-      $min = $testQuestion->get('field_min')->getValue()[0]['value'];
-      $max = $testQuestion->get('field_max')->getValue()[0]['value'];
+      $real_answer = self::removeEmptyValues($answer);
+      foreach ($real_answer['widget'] as $key =>$value) {
+        $sub_response_count = 0;
 
-      $pairs = 0;
-      foreach ($answer as $pair) {
-        if ($pair[1] && $pair[2]) {
-          $pairs++;
+        foreach ($value[1] as $option => $selected){
+
+          if(!empty($selected) && strval($selected) != '0') {
+            $sub_response_count = $sub_response_count + 1;
+          }
+
         }
-        if (($pair[1] && !$pair[2]) || (!$pair[1] && $pair[2])) {
+
+        // Check if the user selected one or more than one $options
+        if ($sub_response_count == 0){
           $form_state->setError($element,
-            t('@name You need to select from both sides to connect a pair!',
-              [
-                '@name' => $element['title']['#markup'],
-              ]
-            )
-          );
+          t(' You have not selected option for <i> @name </i> Please select one option!',
+            [
+              '@name' => $key,
+            ]
+          )
+        );
+
         }
-      }
-      if ($pairs < (int) $min) {
-        $form_state->setError($element,
-          t('@name You need at least @count pair(s)!',
+        // Check if the user selected one or more than one $options
+        if ($sub_response_count > 1){
+          $form_state->setError($element,
+          t('You have selected more than one option for @name Please select only one option!',
             [
-              '@name' => $element['title']['#markup'],
-              '@count' => $min,
+              '@name' => $key,
             ]
           )
         );
+
+        }
+
+
+
+
+
       }
-      elseif ($pairs > (int) $max) {
-        $form_state->setError($element,
-          t('@name You can have maximum of @count pair(s)!',
-            [
-              '@name' => $element['title']['#markup'],
-              '@count' => $max,
-            ]
-          )
-        );
-      }
+
     }
 
     return $form_state;
   }
 
 }
-
