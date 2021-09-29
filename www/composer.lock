@@ -1908,7 +1908,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-2.4",
-                    "datestamp": "1601999178",
+                    "datestamp": "1629907119",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2001,6 +2001,10 @@
                 {
                     "name": "floretan",
                     "homepage": "https://www.drupal.org/user/66163"
+                },
+                {
+                    "name": "nord102",
+                    "homepage": "https://www.drupal.org/user/3471419"
                 }
             ],
             "description": "Limit which text formats are available for each field instance.",
@@ -2028,15 +2032,12 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.2-beta3",
                     "datestamp": "1540072080",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "Beta releases are not covered by Drupal security advisories."
                     }
                 },
                 "patches_applied": {
@@ -2052,6 +2053,10 @@
                 {
                     "name": "adrian1231",
                     "homepage": "https://www.drupal.org/user/3258656"
+                },
+                {
+                    "name": "hexblot",
+                    "homepage": "https://www.drupal.org/user/233388"
                 },
                 {
                     "name": "mstrelan",
@@ -2838,10 +2843,16 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/email_registration.git",
-                "reference": "d5e3db6b774ec861fb30b9dc8c39b63926f39565"
+                "reference": "9978585218d65cbdf0b304025c0deb6be669151a"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8.7.7 || ^9"
+            },
+            "conflict": {
+                "drupal/commerce": "<2.12"
+            },
+            "require-dev": {
+                "drupal/commerce": "^2.0"
             },
             "type": "drupal-module",
             "extra": {
@@ -2849,8 +2860,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.0-rc6+3-dev",
-                    "datestamp": "1557254585",
+                    "version": "8.x-1.0+2-dev",
+                    "datestamp": "1591459495",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -2859,7 +2870,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -2886,10 +2897,10 @@
             "description": "Allows users to register with an email address as their username.",
             "homepage": "https://www.drupal.org/project/email_registration",
             "support": {
-                "source": "http://cgit.drupalcode.org/email_registration",
+                "source": "https://git.drupalcode.org/project/email_registration",
                 "issues": "http://drupal.org/project/issues/email_registration"
             },
-            "time": "2019-08-04T17:46:30+00:00"
+            "time": "2020-06-06T16:03:44+00:00"
         },
         {
             "name": "drupal/entity_reference_revisions",
@@ -3056,7 +3067,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-1.0-rc2",
-                    "datestamp": "1605558489",
+                    "datestamp": "1622655960",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -3135,8 +3146,8 @@
                     "version": "8.x-1.1",
                     "datestamp": "1607623013",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3383,9 +3394,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-3.x": "3.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-3.3",
                     "datestamp": "1519199885",
@@ -3659,14 +3667,14 @@
             "authors": [
                 {
                     "name": "Nicholas Humfrey",
-                    "role": "Developer",
                     "email": "njh@aelius.com",
-                    "homepage": "http://www.aelius.com/njh/"
+                    "homepage": "http://www.aelius.com/njh/",
+                    "role": "Developer"
                 },
                 {
                     "name": "Alexey Zakhlestin",
-                    "role": "Developer",
-                    "email": "indeyets@gmail.com"
+                    "email": "indeyets@gmail.com",
+                    "role": "Developer"
                 }
             ],
             "description": "EasyRdf is a PHP library designed to make it easy to consume and produce RDF.",
@@ -4414,16 +4422,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.4.2",
+            "version": "3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483"
+                "reference": "3ef8657a78278dfeae7707d51747251db4176240"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/17cb82dd625ccb17c74bf8f38563d3b260306483",
-                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/3ef8657a78278dfeae7707d51747251db4176240",
+                "reference": "3ef8657a78278dfeae7707d51747251db4176240",
                 "shasum": ""
             },
             "require": {
@@ -4483,7 +4491,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-12-03T13:43:45+00:00"
+            "time": "2021-09-28T19:18:28+00:00"
         },
         {
             "name": "league/container",
@@ -7453,6 +7461,20 @@
                 "debug",
                 "dump"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-02-24T13:10:00+00:00"
         },
         {
@@ -7735,12 +7757,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
